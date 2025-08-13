@@ -1,1 +1,21 @@
 <p>nav-bar works!</p>
+
+<nav className={styles.toppnav}>
+    <ul>
+      <li><Link className={styles.customLink} to="/admin-index"><h2>Nyheter</h2></Link></li>
+      <li><Link className={styles.customLink}to="/admin-index"><h2>Topplistan</h2></Link></li>
+      <li><Link className={styles.customLink}to="/admin-index"><h2>Rea</h2></Link></li>
+      <li><Link className={styles.customLink} to="/new"><h2>Kampanjer</h2></Link></li>
+    </ul>
+  </nav>
+
+
+  <nav className={styles.toppnavLarge}>
+    <ul>
+    <li><Link className={styles.customLink} to="/admin-index"><h2>Nyheter</h2></Link></li>
+    <li><Link className={styles.customLink} to="/admin-index"><h2>Kategorier</h2></Link></li>
+    <li><Link className={styles.customLink} to="/new"><h2>Topplistan</h2></Link></li>
+    <li><Link className={styles.customLink} to="/admin-index"><h2>Rea</h2></Link></li>
+    <li><Link className={styles.customLink} to="/admin-index"><h2>Kampanjer</h2></Link></li>
+    </ul>
+  </nav>

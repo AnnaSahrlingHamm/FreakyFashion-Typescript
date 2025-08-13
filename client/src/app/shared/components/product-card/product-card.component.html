@@ -1,1 +1,34 @@
 <p>product-card works!</p>
+
+<div class="product-card">
+  <img
+    [src]="getSafeImagePath(product.images.medium)"
+    [srcset]="
+      getSafeImagePath(product.images.small) +
+      ' 300w, ' +
+      getSafeImagePath(product.images.medium) +
+      ' 400w, ' +
+      getSafeImagePath(product.images.large) +
+      ' 500w'
+    "
+    sizes="(max-width: 639px) 300px, (max-width: 1023px) 400px, 500px"
+    [alt]="product.item"
+    class="product-image"
+    (error)="onImageError($event)" 
+  />
+
+  <div class="product-info">
+    <h3>{{ product.item }}</h3>
+
+    <p class="description" *ngIf="product.description">
+      {{ product.description }}
+    </p>
+
+    <p class="brand">{{ product.brand }}</p>
+    <p class="price">{{ product.price }} kr</p>
+
+    <button class="add-to-cart-button" (click)="addToCart(product)">
+      Lägg i varukorg
+    </button>
+  </div>
+</div>

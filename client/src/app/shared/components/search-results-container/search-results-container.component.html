@@ -1,1 +1,25 @@
-<p>search-results-container works!</p>
+<div class="results-container">
+  <h2 class="title">Sökresultat för "{{ searchTerm }}"</h2>
+
+  <!-- Laddar -->
+  <p *ngIf="loading" class="loading">Laddar...</p>
+
+  <!-- Fel -->
+  <p *ngIf="error" class="error">Fel: {{ error }}</p>
+
+  <!-- Inga resultat -->
+  <p
+    *ngIf="!loading && !error && products.length === 0 && searchTerm"
+    class="no-results"
+  >
+    Inga produkter matchade din sökning.
+  </p>
+
+  <!-- Produkter -->
+  <div class="results-grid" *ngIf="!loading && !error && products.length > 0">
+    <app-product-display
+      [products]="products"
+      [isCarouselItem]="false"
+    ></app-product-display>
+  </div>
+</div>

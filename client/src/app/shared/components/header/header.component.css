@@ -1,0 +1,166 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .logocontainer {
+    width: fit-content;
+    border: 10px dotted salmon;
+  }
+  
+  .formcontainer {
+    display: flex;
+  }
+  
+  #freakysearch {
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+  }
+  
+  #headericons {
+    display: flex;
+    padding-left: 10px;
+  }
+  
+  .toppnav {
+    width: fit-content;
+    background-color: whitesmoke;
+    border: none;
+    padding-left: 0;
+  }
+  
+  .toppnavLarge {
+    display: none;
+  }
+  
+  .bi {
+    color: grey;
+    padding: 5px;
+  }
+  
+  #sökknapp {
+    width: 50px;
+    height: 40px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 2);
+  }
+  
+  #sökknapp:hover {
+    background-color: orange;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 2);
+  }
+
+  .icon {
+    font-size: 1.5em;
+    color: grey;
+    padding: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .icon:hover {
+    font-size: 1.8em;
+  }
+  
+  .icon:first-child:hover {
+    color: orange; /* För hjärtikonen */
+  }
+  
+  .icon:last-child:hover {
+    color: blueviolet; /* För varukorgsikonen */
+  }
+  
+
+  @media (min-width: 640px) {
+  
+    header {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  
+    .formcontainer form {
+      justify-content: left;
+      padding-top: 20px;
+    }
+  
+    .formcontainer i {
+      justify-content: right;
+    }
+  
+    #headericons {
+      padding-top: 20px;
+    }
+  
+    .toppnav ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      justify-content: left;
+    }
+  
+    .toppnav ul li {
+      margin-right: 20px;
+    }
+  
+    .toppnavLarge {
+      display: none;
+    }
+
+  }
+
+  @media (min-width: 1024px) {
+    header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .logocontainer {
+      width: fit-content;
+      background-color: transparent;
+    }
+  
+    .formcontainer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-grow: 1;
+    }
+  
+    form {
+      margin-left: 10px;
+    }
+  
+    #headericons {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      padding-right: 40px;
+      padding-bottom: 20px;
+    }
+  
+    .iconlinks {
+      display: flex;
+    }
+  
+    .toppnav {
+      display: none;
+    }
+  
+    .toppnavLarge {
+      width: fit-content;
+      display: flex;
+      background-color: transparent;
+      border: none;
+    }
+  
+    .toppnavLarge ul {
+      display: flex;
+      padding-left: 10px;
+      margin: 0;
+      gap: 10px;
+    }
+  }    

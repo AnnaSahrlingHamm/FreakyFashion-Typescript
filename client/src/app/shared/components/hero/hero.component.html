@@ -1,1 +1,22 @@
 <p>hero works!</p>
+
+<section className="{styles.hero}">
+  <img
+    src="{hero500w}"
+    srcSet="{`"
+    ${hero500w}
+    500w,
+    ${hero_large}
+    600w
+    `}
+    sizes="(max-width: 640px) 500px, 
+             (max-width: 1023px) 600px, 
+             600px"
+    alt="fashionable woman"
+  />
+  <br />
+  <p className="{styles.heroText}">
+    Lorem ipsum dolor sit amet<br />
+    consectetur adipisicing elit.
+  </p>
+</section>

@@ -1,0 +1,147 @@
+/* Accordion styles for mobile */
+.footersmall {
+    background-color: #f8f9fa;
+    padding: 1rem;
+  }
+  
+  .accordion {
+    width: 100%;
+  }
+  
+  .accordionItem {
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .accordionHeader {
+    margin-bottom: 0;
+  }
+  
+  .accordionButton {
+    position: relative;
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    background: #f8f9fa;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .accordionButton:hover {
+    background-color: #e9ecef;
+  }
+   
+  .accordionButton.collapsed {
+    background: #fff;
+  }
+  
+  .accordionIcon {
+    position: absolute;
+    right: 1rem;
+    font-weight: bold;
+  }
+  
+  .accordionCollapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .accordionCollapse.show {
+    max-height: 500px; 
+  }
+  
+  .accordionBody {
+    padding: 0 1rem 1rem;
+  }
+  
+  .accordionBody ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 1rem;
+    margin: 0;
+  }
+  
+  .accordionBody li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Responsive visibility */
+  .d-none {
+    display: none;
+  }
+  
+  .d-md-block {
+    display: block;
+  }
+  
+  .d-md-none {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .d-md-block {
+      display: block;
+    }
+    .d-md-none {
+      display: none;
+    }
+  }
+    
+    .footertable {
+      display: none;
+    }
+    
+    .footerlarge {
+      display: none;
+    }
+    
+    .copyright {
+      text-align: center;
+      background-color: lightgray;
+      color: black;
+      padding: 10px;
+    }
+  
+    @media (min-width: 640px) {
+      .footersmall {
+          display: none;
+        }
+      
+        .footerlarge {
+          border-radius: 2px;
+          display: flex;
+          justify-content: space-around;
+          padding: 40px 20px;
+          background-color:#e6e6f9;
+          flex-wrap: wrap;
+        }
+        
+        .column {
+          flex: 1;
+          min-width: 150px;
+          margin: 0 20px;
+        }
+        
+        .column h4 {
+          font-size: 1.1rem;
+          margin-bottom: 12px;
+          font-weight: bold;
+        }
+        
+        .column ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        
+        .column li {
+          margin-bottom: 8px;
+          font-size: 0.95rem;
+        }
+      }      

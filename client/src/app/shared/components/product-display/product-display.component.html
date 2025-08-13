@@ -1,1 +1,38 @@
 <p>product-display works!</p>
+
+<section class="image-container">
+  <ul
+    *ngFor="let product of processedProducts"
+    class="product-list"
+    [ngClass]="{ 'carousel-item': isCarouselItem }"
+  >
+    <li>
+      <figure class="product-card">
+        <a [routerLink]="['/products', product.slug]">
+          <img
+            [src]="product.imagePath"
+            [alt]="product.name"
+            class="product-image"
+            (error)="handleImageError($event, product.imageOriginal)"
+          />
+        </a>
+
+        <!-- Hjärtikon (endast om ej i karusell) -->
+        <button *ngIf="!isCarouselItem" class="heart-icon" aria-label="Favorit">
+          <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+        </button>
+
+        <!-- Badge -->
+        <div *ngIf="product.isNew" class="badge">Nyhet!</div>
+
+        <!-- Produktinformation -->
+        <figcaption class="product-title">
+          {{ product.name }} - {{ product.price }} SEK
+          <span *ngIf="product.brand" class="brand">
+            | {{ product.brand }}</span
+          >
+        </figcaption>
+      </figure>
+    </li>
+  </ul>
+</section>

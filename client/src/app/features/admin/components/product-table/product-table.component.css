@@ -1,0 +1,113 @@
+
+.admintable {
+    width: 100%;
+    border-collapse: collapse; 
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    overflow: hidden; 
+  }
+  
+  .admintable thead {
+    background-color: #007bff; 
+    color: white; 
+  }
+  
+  .admintable th {
+    padding: 12px 15px; 
+    text-align: left; 
+    font-weight: bold;
+  }
+  
+ 
+  .admintable tbody tr {
+    border-bottom: 1px solid #dddddd; 
+  }
+  
+  .admintable tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9; 
+  }
+  
+  .admintable tbody tr:last-of-type {
+    border-bottom: 2px solid #007bff; 
+  }
+  
+  .admintable tbody tr:hover {
+    background-color: #f1f1f1; 
+  }
+  
+  .admintable td {
+    padding: 12px 15px; 
+  }
+  
+  
+  .admintable tbody tr td[colspan] {
+    text-align: center; 
+    font-style: italic; 
+    color: #888; 
+  }
+
+  .deleteButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff4444;
+    padding: 5px;
+    font-size: 16px;
+    transition: color 0.2s;
+  }
+  
+  .deleteButton:hover:not(:disabled) {
+    color: #cc0000;
+  }
+  
+  .deleteButton:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .tableWrapper {
+    width: 100%;
+  }
+  
+  .topButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .refreshBtn,
+  .newBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .refreshBtn {
+    background-color: #eef6ff;
+    color: #004080;
+  }
+  
+  .refreshBtn:hover {
+    background-color: #d5ebff;
+    border-color: #99cfff;
+  }
+  
+  .newBtn {
+    background-color: #fff3e0;
+    color: #914a00;
+  }
+  
+  .newBtn:hover {
+    background-color: #ffd199;
+    border-color: #ffb347;
+  }
+  

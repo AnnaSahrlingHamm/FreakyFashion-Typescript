@@ -1,0 +1,59 @@
+.toppnav {
+    width: fit-content;
+    background-color: whitesmoke;
+    border: none;
+    padding-left: 0;
+  }
+  
+  .toppnavLarge {
+    display: none;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .customLink {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: black;
+  }
+
+
+  @media (min-width: 640px) {
+    .toppnav ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        justify-content: left;
+      }
+    
+      .toppnav ul li {
+        margin-right: 20px;
+      }
+    
+      .toppnavLarge {
+        display: none;
+      }
+  }
+
+  @media (min-width: 1024px) {
+    .toppnav {
+        display: none;
+      }
+    
+      .toppnavLarge {
+        width: fit-content;
+        display: flex;
+        background-color: transparent;
+        border: none;
+      }
+    
+      .toppnavLarge ul {
+        display: flex;
+        padding-left: 10px;
+        margin: 0;
+        gap: 10px;
+      } 
+    }

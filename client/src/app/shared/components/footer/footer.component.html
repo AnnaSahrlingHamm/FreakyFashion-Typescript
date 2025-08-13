@@ -1,1 +1,61 @@
 <p>footer works!</p>
+
+<footer class="footerlarge">
+  <div class="column">
+    <h4>Shopping</h4>
+    <ul>
+      <li>Vinterjackor</li>
+      <li>Pufferjackor</li>
+      <li>Kappor</li>
+      <li>Trenchcoats</li>
+    </ul>
+  </div>
+
+  <div class="column">
+    <h4>Mina Sidor</h4>
+    <ul>
+      <li>Mina ordrar</li>
+      <li>Mitt konto</li>
+    </ul>
+  </div>
+
+  <div class="column">
+    <h4>Kundtjänst</h4>
+    <ul>
+      <li>Returnpolicy</li>
+      <li>Integritetspolicy</li>
+    </ul>
+  </div>
+</footer>
+
+<footer class="footersmall d-md-none">
+  <div class="accordion">
+    <div
+      class="accordion-item"
+      *ngFor="let section of footerSections; let i = index"
+    >
+      <h2 class="accordion-header">
+        <button
+          class="accordion-button"
+          [ngClass]="{ collapsed: activeIndex !== i }"
+          type="button"
+          (click)="toggleAccordion(i)"
+          [attr.aria-expanded]="activeIndex === i"
+        >
+          {{ section.title }}
+          <span class="accordion-icon">{{
+            activeIndex === i ? "-" : "+"
+          }}</span>
+        </button>
+      </h2>
+
+      <div class="accordion-collapse" [ngClass]="{ show: activeIndex === i }">
+        <div class="accordion-body">
+          <ul>
+            <li *ngFor="let item of section.items">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
