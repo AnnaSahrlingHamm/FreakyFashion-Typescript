@@ -1,0 +1,21 @@
+<div class="container">
+  <app-header></app-header>
+  <app-nav-bar></app-nav-bar>
+  <app-hero></app-hero>
+  <app-spots></app-spots>
+
+  <ng-container *ngIf="loading">
+    <p>Laddar produkter...</p>
+  </ng-container>
+
+  <ng-container *ngIf="error">
+    <p style="color: red">Fel: {{ error }}</p>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && !error">
+    <app-product-display [products]="featuredProducts"></app-product-display>
+  </ng-container>
+
+  <app-icon-links></app-icon-links>
+  <app-footer></app-footer>
+</div>

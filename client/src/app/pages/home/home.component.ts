@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../../products/product.model';
 import { ProductService } from '../../products/services/product.service';
-import { Product } from '../../products/services/product.model';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +16,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     document.title = 'Freaky Fashion';
+    console.log('HomeComponent renderas');
+
     this.productService.getFeaturedProducts().subscribe({
       next: (data) => {
         this.featuredProducts = data;
         this.loading = false;
       },
-      error: () => {
-        this.error = 'Kunde inte hämta produkter';
+      error: (err) => {
+        console.error('Fel vid hämtning av produkter:', err);
+        this.error = 'Kunde inte hämta produkter.';
         this.loading = false;
       }
     });

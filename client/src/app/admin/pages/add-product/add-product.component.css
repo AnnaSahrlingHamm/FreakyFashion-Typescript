@@ -1,0 +1,23 @@
+.adminLayout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .adminContainer {
+    display: flex;
+    flex-grow: 1;  
+  }
+  
+  .adminLeftBar {
+    width: 200px; 
+    background-color: #e0e0e0;
+    padding: 20px;
+  }
+  
+  .adminContent {
+    flex-grow: 1; 
+    padding: 20px;
+    overflow: auto; 
+  }
+  
