@@ -1,1 +1,14 @@
-<p>index works!</p>
+<div class="container">
+  <app-header></app-header>
+  <app-nav-bar></app-nav-bar>
+  <app-hero></app-hero>
+  <app-spots></app-spots>
+
+  <div *ngIf="loading">Laddar produkter...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <app-product-display [products]="featuredProducts"></app-product-display>
+
+  <app-icon-links></app-icon-links>
+  <app-footer></app-footer>
+</div>

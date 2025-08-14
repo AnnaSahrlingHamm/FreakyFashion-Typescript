@@ -5,6 +5,7 @@
   },
   "type": "module",
   "dependencies": {
+    "better-sqlite3": "^12.2.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.9"
   }

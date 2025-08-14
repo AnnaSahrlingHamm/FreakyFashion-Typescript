@@ -1,1 +1,17 @@
-<p>all-products works!</p>
+<div class="container">
+  <app-admin-header></app-admin-header>
+  <div class="admin-layout">
+    <app-admin-left-bar></app-admin-left-bar>
+    <div class="admin-content">
+      <h1>Alla produkter</h1>
+      <div *ngIf="loading">Laddar...</div>
+      <div *ngIf="error" class="error">{{ error }}</div>
+      <app-product-table
+        [products]="products"
+        [isLoading]="isLoading"
+        (deleteProduct)="deleteProduct($event)"
+      >
+      </app-product-table>
+    </div>
+  </div>
+</div>

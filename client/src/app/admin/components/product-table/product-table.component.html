@@ -1,1 +1,39 @@
-<p>product-table works!</p>
+<div class="tableWrapper">
+  <div class="topButtons">
+    <button (click)="handleRefresh()" class="refreshBtn">🔄 Uppdatera</button>
+    <button (click)="navigateToAddProduct()" class="newBtn">
+      ➕ Ny produkt
+    </button>
+  </div>
+
+  <table class="admintable">
+    <thead>
+      <tr>
+        <th>Namn</th>
+        <th>SKU</th>
+        <th>Pris</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!products || products.length === 0">
+        <td colspan="4">Inga produkter tillgängliga</td>
+      </tr>
+      <tr *ngFor="let product of products">
+        <td>{{ product.item }}</td>
+        <td>{{ product.sku }}</td>
+        <td>{{ product.price }} kr</td>
+        <td>
+          <button
+            (click)="onDelete(product.id)"
+            [disabled]="isLoading"
+            aria-label="Ta bort produkt"
+            class="deleteButton"
+          >
+            🗑️
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

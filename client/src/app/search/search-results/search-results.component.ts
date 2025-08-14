@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService } from '../search.service';
+import { ProductService } from '../../products/services/product.service';
+import { Product } from '../../products/services/product.model';
 
 @Component({
   selector: 'app-search-results',
@@ -8,40 +9,33 @@ import { SearchService } from '../search.service';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  products: any[] = [];
-  query: string = '';
-  isLoading: boolean = false;
+  query = '';
+  results: Product[] = [];
+  loading = false;
   error: string | null = null;
 
-  constructor(
-    private route: ActivatedRoute,
-    private searchService: SearchService
-  ) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => {
-      this.query = params.get('q') || '';
+    this.route.queryParams.subscribe(params => {
+      this.query = params['q'] || '';
       if (this.query) {
-        this.fetchResults();
+        this.search();
       }
     });
   }
 
-  fetchResults(): void {
-    this.isLoading = true;
-    this.error = null;
-    this.searchService.searchProducts(this.query).subscribe({
+  search(): void {
+    this.loading = true;
+    this.productService.searchProducts(this.query).subscribe({
       next: (data) => {
-        this.products = data;
+        this.results = data;
+        this.loading = false;
       },
-      error: (err) => {
-        console.error(err);
-        this.error = 'Kunde inte hämta sökresultat.';
-      },
-      complete: () => {
-        this.isLoading = false;
+      error: () => {
+        this.error = 'Kunde inte hämta sökresultat';
+        this.loading = false;
       }
     });
   }
 }
-

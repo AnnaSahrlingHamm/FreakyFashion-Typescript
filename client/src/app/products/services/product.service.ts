@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Product } from '../product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +11,45 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  // Hämta alla produkter
-  getProducts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  /**
+   * Hämtar alla produkter
+   */
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl);
   }
 
-  // Hämta utvalda produkter (featured)
-  getFeaturedProducts(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/featured`);
+  /**
+   * Hämtar utvalda produkter (för startsidan)
+   */
+  getFeaturedProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/featured`);
   }
 
-  // Lägg till en ny produkt
-  addProduct(product: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, product);
+  /**
+   * Hämtar en produkt via slug (för produktsidan)
+   */
+  getProductBySlug(slug: string): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/${slug}`);
   }
 
-  // Ta bort en produkt
-  deleteProduct(productId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${productId}`);
+  /**
+   * Sök efter produkter
+   */
+  searchProducts(query: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/search?q=${encodeURIComponent(query)}`);
+  }
+
+  /**
+   * Lägg till en ny produkt
+   */
+  addProduct(product: Partial<Product>): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product);
+  }
+
+  /**
+   * Ta bort en produkt via id
+   */
+  deleteProduct(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
-
