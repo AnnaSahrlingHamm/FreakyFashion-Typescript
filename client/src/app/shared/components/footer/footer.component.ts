@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NgIf, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common'; // behövs för ngClass
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [NgIf, NgFor], // lägg till Angular-direktiv eller andra komponenter
+  imports: [CommonModule],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })

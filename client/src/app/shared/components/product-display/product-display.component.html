@@ -1,14 +1,30 @@
 <section class="image-container">
-  <ng-container *ngIf="products && products.length > 0; else noProducts">
-    <ul *ngFor="let product of products" class="product-list">
-      <li>
-        <app-product-card [product]="product"></app-product-card>
-        <div *ngIf="isNewProduct(product)" class="badge">Nyhet!</div>
-      </li>
-    </ul>
-  </ng-container>
+  <!-- Tomt meddelande -->
+  <div *ngIf="!products || products.length === 0" class="empty">
+    Inga produkter att visa
+  </div>
 
-  <ng-template #noProducts>
-    <div class="empty">Inga produkter att visa</div>
-  </ng-template>
+  <!-- Produktlista -->
+  <ul *ngFor="let product of products" class="product-list">
+    <li>
+      <figure class="product-card">
+        <a [routerLink]="['/products', product.slug || 'saknas']">
+          <img
+            [src]="product.image || '/placeholder.webp'"
+            [alt]="product.item || 'Namn saknas'"
+            class="product-image"
+            (error)="($event.target as HTMLImageElement).src='/placeholder.webp'"
+          />
+        </a>
+
+        <!-- Nyhetsbadge -->
+        <div *ngIf="isNewProduct(product)" class="badge">Nyhet!</div>
+
+        <figcaption class="product-title">
+          {{ product.item || 'Namn saknas' }} - {{ product.price || 'Pris saknas' }} SEK
+          <span *ngIf="product.brand" class="brand"> | {{ product.brand }}</span>
+        </figcaption>
+      </figure>
+    </li>
+  </ul>
 </section>

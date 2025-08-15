@@ -1,23 +1,16 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common'; // för ngIf/ngFor/ngClass
+import { FormsModule } from '@angular/forms'; // för ngModel
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  standalone: true,
   selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule, FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  searchTerm: string = '';
-
-  constructor(private router: Router) {}
-
-  handleSubmit(event: Event): void {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (this.searchTerm.trim()) {
-      this.router.navigate(['/search'], { queryParams: { q: this.searchTerm } });
-    }
-  }
+  searchTerm = '';
 }

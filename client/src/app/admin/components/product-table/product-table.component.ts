@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Product } from '../../../products/product.model';
-import { Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @Component({
   standalone: true,
-  selector: 'app-product-table',
+  imports: [CommonModule, RouterModule, FontAwesomeModule],
+selector: 'app-product-table',
   templateUrl: './product-table.component.html',
   styleUrls: ['./product-table.component.css']
 })

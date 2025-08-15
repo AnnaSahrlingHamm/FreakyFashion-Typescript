@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../../products/services/product.service';
 
 @Component({
   standalone: true,
+  imports: [CommonModule, FormsModule],
   selector: 'app-add-product-form',
   templateUrl: './add-product-form.component.html',
   styleUrls: ['./add-product-form.component.css']
