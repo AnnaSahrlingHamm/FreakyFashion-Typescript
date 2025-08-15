@@ -4,6 +4,7 @@ import { ProductService } from '../../products/services/product.service';
 import { Product } from '../../products/product.model';
 
 @Component({
+  standalone: true,
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']

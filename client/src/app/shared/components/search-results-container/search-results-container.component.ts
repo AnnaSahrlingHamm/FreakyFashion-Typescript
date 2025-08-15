@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
+  standalone: true,
   selector: 'app-search-results-container',
   templateUrl: './search-results-container.component.html',
   styleUrls: ['./search-results-container.component.scss']

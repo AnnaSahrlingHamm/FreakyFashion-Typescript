@@ -3,6 +3,7 @@ import { Product } from '../../../products/product.model';
 import { Router } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-product-table',
   templateUrl: './product-table.component.html',
   styleUrls: ['./product-table.component.css']

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../../products/product.model';
 
 @Component({
+  standalone: true,
   selector: 'app-product-display',
   templateUrl: './product-display.component.html',
   styleUrls: ['./product-display.component.css']
