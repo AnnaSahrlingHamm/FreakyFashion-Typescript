@@ -1,21 +1,42 @@
-<p>nav-bar works!</p>
+<!-- Mobile / small version -->
+<nav class="toppnav">
+  <ul>
+    <li>
+      <a [routerLink]="'/admin-index'" class="customLink"><h2>Nyheter</h2></a>
+    </li>
+    <li>
+      <a [routerLink]="'/admin-index'" class="customLink"
+        ><h2>Topplistan</h2></a
+      >
+    </li>
+    <li>
+      <a [routerLink]="'/admin-index'" class="customLink"><h2>Rea</h2></a>
+    </li>
+    <li>
+      <a [routerLink]="'/new'" class="customLink"><h2>Kampanjer</h2></a>
+    </li>
+  </ul>
+</nav>
 
-<nav className={styles.toppnav}>
-    <ul>
-      <li><Link className={styles.customLink} to="/admin-index"><h2>Nyheter</h2></Link></li>
-      <li><Link className={styles.customLink}to="/admin-index"><h2>Topplistan</h2></Link></li>
-      <li><Link className={styles.customLink}to="/admin-index"><h2>Rea</h2></Link></li>
-      <li><Link className={styles.customLink} to="/new"><h2>Kampanjer</h2></Link></li>
-    </ul>
-  </nav>
-
-
-  <nav className={styles.toppnavLarge}>
-    <ul>
-    <li><Link className={styles.customLink} to="/admin-index"><h2>Nyheter</h2></Link></li>
-    <li><Link className={styles.customLink} to="/admin-index"><h2>Kategorier</h2></Link></li>
-    <li><Link className={styles.customLink} to="/new"><h2>Topplistan</h2></Link></li>
-    <li><Link className={styles.customLink} to="/admin-index"><h2>Rea</h2></Link></li>
-    <li><Link className={styles.customLink} to="/admin-index"><h2>Kampanjer</h2></Link></li>
-    </ul>
-  </nav>
+<!-- Desktop / large version -->
+<nav class="toppnavLarge">
+  <ul>
+    <li>
+      <a [routerLink]="'/admin-index'" class="customLink"><h2>Nyheter</h2></a>
+    </li>
+    <li>
+      <a [routerLink]="'/admin-index'" class="customLink"
+        ><h2>Kategorier</h2></a
+      >
+    </li>
+    <li>
+      <a [routerLink]="'/new'" class="customLink"><h2>Topplistan</h2></a>
+    </li>
+    <li>
+      <a [routerLink]="'/admin-index'" class="customLink"><h2>Rea</h2></a>
+    </li>
+    <li>
+      <a [routerLink]="'/admin-index'" class="customLink"><h2>Kampanjer</h2></a>
+    </li>
+  </ul>
+</nav>

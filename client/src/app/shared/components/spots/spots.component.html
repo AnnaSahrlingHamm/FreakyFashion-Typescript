@@ -1,27 +1,25 @@
-<p>spots works!</p>
-
 <section class="spots">
-  <button (click)="onClick($event)">
+  <button (click)="preventDefault($event)">
     <article id="spot1">
-      <img src="assets/images/eye.png" alt="staring eye with the text 'Buy'" />
+      <img [src]="eyeImg" alt="staring eye with the text 'Buy'" />
       <div class="buy">Buy!</div>
     </article>
   </button>
 
-  <button (click)="onClick($event)">
+  <button (click)="preventDefault($event)">
     <article id="spot2">
       <img
-        src="assets/images/shoe.png"
+        [src]="shoeImg"
         alt="grinning lady's shoe sole in giant closeup with the text 'Our'"
       />
       <div class="our">Our!</div>
     </article>
   </button>
 
-  <button (click)="onClick($event)">
+  <button (click)="preventDefault($event)">
     <article id="spot3">
       <img
-        src="assets/images/cat.png"
+        [src]="catImg"
         alt="Cat with mouth open wide with the text 'Clothes!'"
       />
       <div class="clothes">Clothes!</div>

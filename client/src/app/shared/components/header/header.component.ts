@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
   searchTerm: string = '';
@@ -16,12 +16,7 @@ export class HeaderComponent {
     event.stopPropagation();
 
     if (this.searchTerm.trim()) {
-      const encodedQuery = encodeURIComponent(this.searchTerm);
-      this.router.navigate(['/search'], { queryParams: { q: encodedQuery } });
+      this.router.navigate(['/search'], { queryParams: { q: this.searchTerm } });
     }
-  }
-
-  preventDefault(event: Event): void {
-    event.preventDefault();
   }
 }

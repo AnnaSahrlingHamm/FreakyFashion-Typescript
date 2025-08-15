@@ -1,110 +1,108 @@
 .imageContainer {
-    display: grid;
-    gap: 1.5rem;
-    padding: 2rem;
-    justify-content: center;
-    grid-template-columns: 1fr;
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-content: center;
+  grid-template-columns: 1fr;
+}
+
+.productCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  background: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.productCard:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+.productImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.productImage:hover {
+  transform: scale(1.03);
+}
+
+.heartIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: grey;
+  cursor: pointer;
+  background: white;
+  border-radius: 50%;
+  padding: 6px;
+  border: none;
+  font-size: 1.2rem;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+
+.heartIcon:hover {
+  color: orange;
+  transform: scale(1.2);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: black;
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+
+.productTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px;
+  color: black;
+}
+
+.brand {
+  font-weight: normal;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  color: #333;
+}
+
+.carouselItem .productImage {
+  height: 400px;
+  width: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+@media (min-width: 640px) {
+  .imageContainer {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .productCard {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 300px;
-    background: transparent;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .imageContainer {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  .productCard:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  
-  .productImage {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
-  
-  .productImage:hover {
-    transform: scale(1.03);
-  }
-  
-  .heartIcon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: grey;
-    cursor: pointer;
-    background: white;
-    border-radius: 50%;
-    padding: 6px;
-    border: none;
-    font-size: 1.2rem;
-    z-index: 2;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .heartIcon:hover {
-    color: orange;
-    transform: scale(1.2);
-  }
-  
-  .badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: black;
-    color: white;
-    padding: 4px 8px;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    z-index: 2;
-  }
-  
-  
-  .productTitle {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    font-weight: bold;
-    font-size: 1rem;
-    padding: 10px;
-    color: black;
-  }
-  
-  .brand {
-    font-weight: normal;
-    font-size: 0.9rem;
-    margin-top: 4px;
-    color: #333;
-  }
-  
-  .carouselItem .productImage {
-    height: 400px;
-    width: auto;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-  
-  
-  
-  @media (min-width: 640px) {
-    .imageContainer {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .imageContainer {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
+}

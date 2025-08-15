@@ -11,45 +11,33 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  /**
-   * Hämtar alla produkter
-   */
-  getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl);
-  }
-
-  /**
-   * Hämtar utvalda produkter (för startsidan)
-   */
+  /** Hämta utvalda produkter */
   getFeaturedProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/featured`);
   }
 
-  /**
-   * Hämtar en produkt via slug (för produktsidan)
-   */
-  getProductBySlug(slug: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/${slug}`);
+  /** Hämta alla produkter */
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl);
   }
 
-  /**
-   * Sök efter produkter
-   */
+  /** Hämta produkt efter slug */
+  getProductBySlug(slug: string): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/slug/${slug}`);
+  }
+
+  /** Sök produkter */
   searchProducts(query: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/search?q=${encodeURIComponent(query)}`);
   }
 
-  /**
-   * Lägg till en ny produkt
-   */
-  addProduct(product: Partial<Product>): Observable<Product> {
-    return this.http.post<Product>(this.apiUrl, product);
-  }
-
-  /**
-   * Ta bort en produkt via id
-   */
+  /** Ta bort en produkt */
   deleteProduct(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  /** Lägg till ny produkt */
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product);
   }
 }

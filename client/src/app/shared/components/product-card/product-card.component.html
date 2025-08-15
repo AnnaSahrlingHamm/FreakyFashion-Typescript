@@ -1,34 +1,40 @@
-<p>product-card works!</p>
-
-<div class="product-card">
+<div class="product-card" *ngIf="product && product.image; else invalidProduct">
   <img
-    [src]="getSafeImagePath(product.images.medium)"
+    [src]="
+      getSafeImagePath(
+        getImageVariants(product.image.replace('.webp', '')).medium
+      )
+    "
     [srcset]="
-      getSafeImagePath(product.images.small) +
+      getSafeImagePath(
+        getImageVariants(product.image.replace('.webp', '')).small
+      ) +
       ' 300w, ' +
-      getSafeImagePath(product.images.medium) +
+      getSafeImagePath(
+        getImageVariants(product.image.replace('.webp', '')).medium
+      ) +
       ' 400w, ' +
-      getSafeImagePath(product.images.large) +
+      getSafeImagePath(
+        getImageVariants(product.image.replace('.webp', '')).large
+      ) +
       ' 500w'
     "
     sizes="(max-width: 639px) 300px, (max-width: 1023px) 400px, 500px"
     [alt]="product.item"
     class="product-image"
-    (error)="onImageError($event)" 
+    (error)="($event.target as HTMLImageElement).src = '/assets/placeholder.webp'"
   />
 
   <div class="product-info">
     <h3>{{ product.item }}</h3>
-
     <p class="description" *ngIf="product.description">
       {{ product.description }}
     </p>
-
     <p class="brand">{{ product.brand }}</p>
     <p class="price">{{ product.price }} kr</p>
-
-    <button class="add-to-cart-button" (click)="addToCart(product)">
-      Lägg i varukorg
-    </button>
   </div>
 </div>
+
+<ng-template #invalidProduct>
+  <div class="product-card">Felaktig produktdata</div>
+</ng-template>

@@ -1,6 +1,6 @@
 <header class="header">
   <div class="logocontainer">
-    <a routerLink="/" class="icon" aria-label="Gå till startsidan">
+    <a [routerLink]="'/'" class="icon" aria-label="Gå till startsidan">
       <img
         src="assets/images/nonProductImgs/FREAKYFASHIONlogo.png"
         alt="Välkommen till Freaky Fashion!"
@@ -9,24 +9,24 @@
   </div>
 
   <div class="formcontainer">
-    <form (ngSubmit)="handleSubmit($event)" action="#" method="GET">
+    <form (submit)="handleSubmit($event)" action="#" method="GET">
       <input
         type="search"
         id="freakysearch"
         name="q"
         [(ngModel)]="searchTerm"
         placeholder="Sök vår sajt!"
-        name="searchTerm"
+        required
       />
       <button type="submit" id="sökknapp">Sök</button>
     </form>
 
     <div id="headericons">
-      <a href="#" (click)="preventDefault($event)" class="icon">
-        <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+      <a href="#" (click)="$event.preventDefault()" class="icon">
+        <fa-icon [icon]="'heart'"></fa-icon>
       </a>
-      <a routerLink="/basket" class="icon" aria-label="Gå till kassan">
-        <fa-icon [icon]="['fas', 'basket-shopping']"></fa-icon>
+      <a [routerLink]="'/basket'" class="icon" aria-label="Gå till kassan">
+        <fa-icon [icon]="'shopping-basket'"></fa-icon>
       </a>
     </div>
   </div>

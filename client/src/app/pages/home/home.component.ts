@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../products/product.model';
 import { ProductService } from '../../products/services/product.service';
+import { Product } from '../../products/product.model';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => {
         console.error('Fel vid hämtning av produkter:', err);
-        this.error = 'Kunde inte hämta produkter.';
+        this.error = 'Något gick fel vid hämtning av produkter';
         this.loading = false;
       }
     });

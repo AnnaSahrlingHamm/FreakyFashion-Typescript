@@ -1,0 +1,52 @@
+.spots {
+    display: none;
+    gap: 20px;
+  }
+
+  @media (min-width: 1024px) {
+    .spots {
+        display: flex;
+        gap: 20px;
+        justify-content: space-evenly;
+        padding: 20px;
+      }
+    
+      #spot1 {
+        position: relative;
+        text-align: center;
+      }
+    
+      .buy {
+        position: absolute;
+        color: white;
+        font-size: 3rem;
+        bottom: 50px;
+        left: 50px;
+      }
+    
+      #spot2 {
+        position: relative;
+        text-align: center;
+      }
+    
+      .our {
+        position: absolute;
+        color: white;
+        font-size: 3rem;
+        top: 50px;
+        right: 100px;
+      }
+    
+      #spot3 {
+        position: relative;
+        text-align: center;
+      }
+    
+      .clothes {
+        position: absolute;
+        color: white;
+        font-size: 3rem;
+        right: 50px;
+        bottom: 50px;
+      }
+  }

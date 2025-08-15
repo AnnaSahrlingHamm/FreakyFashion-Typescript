@@ -2,10 +2,15 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-spots',
-  imports: [],
   templateUrl: './spots.component.html',
-  styleUrl: './spots.component.css'
+  styleUrls: ['./spots.component.css']
 })
 export class SpotsComponent {
+  eyeImg = 'assets/images/nonProductImgs/eye300w.jpg';
+  shoeImg = 'assets/images/nonProductImgs/shoe300w.jpg';
+  catImg = 'assets/images/nonProductImgs/cat300w.jpg';
 
+  preventDefault(event: Event): void {
+    event.preventDefault();
+  }
 }
