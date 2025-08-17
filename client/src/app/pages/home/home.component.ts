@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ProductService } from '../../products/services/product.service';
 import { Product } from '../../products/product.model';
 import { NavBarComponent } from '../../shared/components/nav-bar/nav-bar.component';
@@ -10,6 +11,7 @@ import { IconLinksComponent } from '../../shared/components/icon-links/icon-link
 @Component({
   standalone: true,
   imports: [
+    CommonModule,
     NavBarComponent,
     HeroComponent,
     ProductDisplayComponent,

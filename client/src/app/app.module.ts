@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+//import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module'; // Se till att du har denna
 
 // Dina komponenter:
@@ -15,7 +15,7 @@ import { NotFoundComponent } from './search/not-found/not-found.component';
 import { AdminModule } from './admin/admin.module';
 import { FooterComponent } from './shared/components//footer/footer.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
-import { SearchResultsComponent } from './search/search-results/search-results.component';
+import { SearchResultsComponent } from './search/pages/search-results/search-results.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AddProductComponent } from './admin/pages/add-product/add-product.component';
 import { AllProductsComponent } from './admin/pages/all-products/all-products.component';
@@ -48,7 +48,7 @@ import { IconLinksComponent } from './shared/components/icon-links/icon-links.co
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
+    //HttpClientModule,
     AdminModule
   ],
   providers: [],

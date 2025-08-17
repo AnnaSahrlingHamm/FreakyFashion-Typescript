@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { CartService } from '../../../core/cart.service'; 
+import { CommonModule } from '@angular/common';
+import { productImages, images } from 'src/app/products/product-images';
 
 @Component({
   standalone: true,
+  imports: [CommonModule],
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss']
@@ -16,8 +18,7 @@ export class ProductCardComponent {
     large: '/placeholder.webp'
   };
 
-  constructor(private cartService: CartService) {}
-
+ 
   ngOnChanges(): void {
     if (this.product && this.product.image) {
       const imageBase = this.product.image.replace('.webp', '');

@@ -1,0 +1,18 @@
+<!-- SearchComponent skickar ut sökord via (search) -->
+<app-search (search)="onSearch($event)"></app-search>
+
+<div class="results-container" *ngIf="searchTerm">
+  <h2 class="title">Sökresultat för "{{ searchTerm }}"</h2>
+
+  <p *ngIf="loading" class="loading">Laddar...</p>
+  <p *ngIf="error" class="error">Fel: {{ error }}</p>
+
+  <p *ngIf="!loading && !error && products.length === 0" class="no-results">
+    Inga produkter matchade din sökning.
+  </p>
+
+  <div class="results-grid">
+    <app-product-display [products]="products" [isCarouselItem]="false"></app-product-display>
+  </div>
+</div>
+
