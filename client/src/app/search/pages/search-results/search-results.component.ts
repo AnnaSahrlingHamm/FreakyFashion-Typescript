@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router'; 
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { NavBarComponent } from '../../../shared/components/nav-bar/nav-bar.component';
 import { IconLinksComponent } from '../../../shared/components/icon-links/icon-links.component';
@@ -22,4 +22,13 @@ import { SearchResultsContainerComponent } from '../../pages/search-results-cont
     SearchResultsContainerComponent
   ]
 })
-export class SearchResultsComponent {}
+export class SearchResultsComponent implements OnInit {
+  searchTerm: string = ''; 
+
+  constructor(private route: ActivatedRoute) {} 
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.searchTerm = params['q'] || '';
+    });
+  }
+}

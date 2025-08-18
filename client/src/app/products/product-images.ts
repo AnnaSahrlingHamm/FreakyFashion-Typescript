@@ -1,21 +1,27 @@
-// src/app/products/product-images.ts
-
-// En mapping mellan filnamn och dess sökväg i assets/
-// Byt ut "produkt1", "produkt2" osv mot dina faktiska bildnamn.
-
-export const productImages: Record<string, string> = {
-  "produkt1": "assets/images/produkt1.webp",
-  "produkt1_300w": "assets/images/produkt1_300w.webp",
-  "produkt1_400w": "assets/images/produkt1_400w.webp",
-  "produkt1_500w": "assets/images/produkt1_500w.webp",
-
-  "produkt2": "assets/images/produkt2.webp",
-  "produkt2_300w": "assets/images/produkt2_300w.webp",
-  "produkt2_400w": "assets/images/produkt2_400w.webp",
-  "produkt2_500w": "assets/images/produkt2_500w.webp",
-
-  "produkt3": "assets/images/produkt3.webp",
-  "produkt3_300w": "assets/images/produkt3_300w.webp",
-  "produkt3_400w": "assets/images/produkt3_400w.webp",
-  "produkt3_500w": "assets/images/produkt3_500w.webp",
+// Auto-genererad fil — ändra inte manuellt!
+// Kör "npm run generate:images" för att uppdatera
+export const productImages: Record<string, { small: string; medium: string; large: string }> = {
+  "black-orange-suit": {"small":"assets/images/black-orange-suit_300w.webp","medium":"assets/images/black-orange-suit_400w.webp","large":"assets/images/black-orange-suit_500w.webp"},
+  "coral-blue-suit": {"small":"assets/images/coral-blue-suit_300w.webp","medium":"assets/images/coral-blue-suit_400w.webp","large":"assets/images/coral-blue-suit_500w.webp"},
+  "coral-pink-suit": {"small":"assets/images/coral-pink-suit_300w.webp","medium":"assets/images/coral-pink-suit_400w.webp","large":"assets/images/coral-pink-suit_500w.webp"},
+  "grey-purple-suit": {"small":"assets/images/grey-purple-suit_300w.webp","medium":"assets/images/grey-purple-suit_400w.webp","large":"assets/images/grey-purple-suit_500w.webp"},
+  "orange-blue-suit": {"small":"assets/images/orange-blue-suit_300w.webp","medium":"assets/images/orange-blue-suit_400w.webp","large":"assets/images/orange-blue-suit_500w.webp"},
+  "pink-blue-suit": {"small":"assets/images/pink-blue-suit_300w.webp","medium":"assets/images/pink-blue-suit_400w.webp","large":"assets/images/pink-blue-suit_500w.webp"},
+  "pink-blue-suit_300px": {"small":"assets/images/placeholder.webp","medium":"assets/images/pink-blue-suit_300px.webp","large":"assets/images/placeholder.webp"},
+  "red-black-blue-suit": {"small":"assets/images/red-black-blue-suit_300w.webp","medium":"assets/images/red-black-blue-suit_400w.webp","large":"assets/images/red-black-blue-suit_500w.webp"},
+  "red-black-blue-suit_300px": {"small":"assets/images/placeholder.webp","medium":"assets/images/red-black-blue-suit_300px.webp","large":"assets/images/placeholder.webp"},
+  "testbild": {"small":"assets/images/placeholder.webp","medium":"assets/images/testbild.webp","large":"assets/images/placeholder.webp"},
+  "tracksuit1": {"small":"assets/images/tracksuit1_300w.webp","medium":"assets/images/tracksuit1_400w.webp","large":"assets/images/tracksuit1_500w.webp"},
+  "tracksuit1_300px": {"small":"assets/images/placeholder.webp","medium":"assets/images/tracksuit1_300px.webp","large":"assets/images/placeholder.webp"},
+  "tracksuit2": {"small":"assets/images/tracksuit2_300w.webp","medium":"assets/images/tracksuit2_400w.webp","large":"assets/images/tracksuit2_500w.webp"},
+  "tracksuit3": {"small":"assets/images/tracksuit3_300w.webp","medium":"assets/images/tracksuit3_400w.webp","large":"assets/images/tracksuit3_500w.webp"},
+  "tracksuit4": {"small":"assets/images/tracksuit4_300w.webp","medium":"assets/images/tracksuit4_400w.webp","large":"assets/images/tracksuit4_500w.webp"},
+  "tshirt1": {"small":"assets/images/tshirt1_300w.webp","medium":"assets/images/tshirt1_400w.webp","large":"assets/images/tshirt1_500w.webp"},
+  "tshirt2": {"small":"assets/images/tshirt2_300w.webp","medium":"assets/images/tshirt2_400w.webp","large":"assets/images/tshirt2_500w.webp"},
+  "tshirt3": {"small":"assets/images/tshirt3_300w.webp","medium":"assets/images/tshirt3_400w.webp","large":"assets/images/tshirt3_500w.webp"},
+  "tshirt4": {"small":"assets/images/tshirt4_300w.webp","medium":"assets/images/tshirt4_400w.webp","large":"assets/images/tshirt4_500w.webp"},
+  "woman-coat-1": {"small":"assets/images/woman-coat-1_300w.webp","medium":"assets/images/woman-coat-1_400w.webp","large":"assets/images/woman-coat-1_500w.webp"},
+  "woman-coat-2": {"small":"assets/images/woman-coat-2_300w.webp","medium":"assets/images/woman-coat-2_400w.webp","large":"assets/images/woman-coat-2_500w.webp"},
+  "woman-coat-3": {"small":"assets/images/woman-coat-3_300w.webp","medium":"assets/images/woman-coat-3_400w.webp","large":"assets/images/woman-coat-3_500w.webp"},
+  "woman-coat-4": {"small":"assets/images/woman-coat-4_300w.webp","medium":"assets/images/woman-coat-4_400w.webp","large":"assets/images/woman-coat-4_500w.webp"},
 };

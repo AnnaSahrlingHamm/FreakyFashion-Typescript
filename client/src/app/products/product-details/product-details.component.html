@@ -6,11 +6,11 @@
 
 <div *ngIf="!loading && product" class="product-details">
   <img
-    [src]="product.image || '/placeholder.webp'"
-    [alt]="product.item"
-    class="product-image"
-    (error)="($event.target as HTMLImageElement).src = '/placeholder.webp'"
-  />
+  [src]="product.image || '/placeholder.webp'"
+  [alt]="product.item"
+  class="product-image"
+  (error)="handleImageError($event)" 
+/>
 
   <h1>{{ product.item }}</h1>
   <p class="price">{{ product.price }} SEK</p>

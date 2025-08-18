@@ -5,15 +5,15 @@
   </div>
 
   <!-- Produktlista -->
-  <ul *ngFor="let product of products" class="product-list">
-    <li>
+  <ul class="product-list">
+    <li *ngFor="let product of products">
       <figure class="product-card">
         <a [routerLink]="['/products', product.slug || 'saknas']">
           <img
             [src]="product.image || '/placeholder.webp'"
             [alt]="product.item || 'Namn saknas'"
             class="product-image"
-            (error)="($event.target as HTMLImageElement).src='/placeholder.webp'"
+            (error)="handleImageError($event)"
           />
         </a>
 
@@ -21,8 +21,11 @@
         <div *ngIf="isNewProduct(product)" class="badge">Nyhet!</div>
 
         <figcaption class="product-title">
-          {{ product.item || 'Namn saknas' }} - {{ product.price || 'Pris saknas' }} SEK
-          <span *ngIf="product.brand" class="brand"> | {{ product.brand }}</span>
+          {{ product.item || "Namn saknas" }} -
+          {{ product.price || "Pris saknas" }} SEK
+          <span *ngIf="product.brand" class="brand">
+            | {{ product.brand }}</span
+          >
         </figcaption>
       </figure>
     </li>

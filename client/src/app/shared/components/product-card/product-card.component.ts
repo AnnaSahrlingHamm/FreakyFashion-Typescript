@@ -1,76 +1,38 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { productImages, images } from 'src/app/products/product-images';
+import { RouterModule } from '@angular/router';
+import { productImages } from '../../../products/product-images'; // auto-genererad fil
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss']
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnChanges {
   @Input() product: any;
 
   images: { small: string; medium: string; large: string } = {
-    small: '/placeholder.webp',
-    medium: '/placeholder.webp',
-    large: '/placeholder.webp'
+    small: '/assets/images/placeholder.webp',
+    medium: '/assets/images/placeholder.webp',
+    large: '/assets/images/placeholder.webp'
   };
 
- 
   ngOnChanges(): void {
-    if (this.product && this.product.image) {
-      const imageBase = this.product.image.replace('.webp', '');
-      this.images = this.getImageVariants(imageBase);
+    if (this.product?.image) {
+      const imageBase = this.product.image.replace('.webp', ''); // t.ex. "produkt1"
+      this.images = productImages[imageBase] || this.images;
     }
   }
 
   getSafeImagePath(path: string): string {
-    if (!path || typeof path !== 'string') return '/placeholder.webp';
-    return path;
-  }
-
-  getImageVariants(base: string): { small: string; medium: string; large: string } {
-    if (images[base]) {
-      return {
-        small: '/placeholder.webp',
-        medium: '/placeholder.webp',
-        large: '/placeholder.webp'
-      };
-    }
-
-    return {
-      small: productImages[`${base}_300w`] || productImages[base],
-      medium: productImages[`${base}_400w`] || productImages[base],
-      large: productImages[`${base}_500w`] || productImages[base]
-    };
+    return path || '/assets/images/placeholder.webp';
   }
 
   handleImageError(event: Event): void {
     const target = event.target as HTMLImageElement;
-    target.src = '/placeholder.webp';
-    target.srcset = '/placeholder.webp';
-  }
-
-  addToCart(): void {
-    if (!this.product || !this.product.id) {
-      console.error('Ogiltig produkt:', this.product);
-      return;
-    }
-
-    const cartItem = {
-      id: this.product.id,
-      item: this.product.item,
-      name: this.product.item,
-      price: typeof this.product.price === 'number'
-        ? this.product.price
-        : Number(this.product.price),
-      image: this.product.image,
-      slug: this.product.slug
-    };
-
-    console.log('Lägger till i varukorgen:', cartItem);
-    this.cartService.addToCart(cartItem);
+    target.src = '/assets/images/placeholder.webp';
+    target.srcset = '/assets/images/placeholder.webp';
   }
 }

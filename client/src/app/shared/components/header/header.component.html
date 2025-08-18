@@ -9,7 +9,7 @@
   </div>
 
   <div class="formcontainer">
-    <form (submit)="handleSubmit($event)" action="#" method="GET">
+    <form (ngSubmit)="onSearch()" #searchForm="ngForm">
       <input
         type="search"
         id="freakysearch"
@@ -23,10 +23,10 @@
 
     <div id="headericons">
       <a href="#" (click)="$event.preventDefault()" class="icon">
-        <fa-icon [icon]="'heart'"></fa-icon>
+        <fa-icon [icon]="faHeart"></fa-icon>
       </a>
       <a [routerLink]="'/basket'" class="icon" aria-label="Gå till kassan">
-        <fa-icon [icon]="'shopping-basket'"></fa-icon>
+        <fa-icon [icon]="faShoppingBasket"></fa-icon>
       </a>
     </div>
   </div>

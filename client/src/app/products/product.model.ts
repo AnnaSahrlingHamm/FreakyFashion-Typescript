@@ -1,5 +1,5 @@
 export interface Product {
-  id?: number;              // unik identifierare
+  id: number;                // unik identifierare
   slug?: string;             // URL-slug för produkten
   item: string;              // produktnamn
   description?: string;      // beskrivning

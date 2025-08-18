@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ProductService } from '../../products/services/product.service';
 import { Product } from '../../products/product.model';
+import { HeaderComponent } from '../../shared/components/header/header.component';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { NavBarComponent } from '../../shared/components/nav-bar/nav-bar.component';
 import { HeroComponent } from '../../shared/components/hero/hero.component';
 import { ProductDisplayComponent } from '../../shared/components/product-display/product-display.component';
@@ -12,6 +15,9 @@ import { IconLinksComponent } from '../../shared/components/icon-links/icon-link
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
+    HeaderComponent,
+    FooterComponent,
     NavBarComponent,
     HeroComponent,
     ProductDisplayComponent,

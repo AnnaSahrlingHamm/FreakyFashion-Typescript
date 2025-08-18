@@ -1,40 +1,21 @@
-<div class="product-card" *ngIf="product && product.image; else invalidProduct">
+<div class="product-card">
   <img
-    [src]="
-      getSafeImagePath(
-        getImageVariants(product.image.replace('.webp', '')).medium
-      )
-    "
+    [src]="getSafeImagePath(images.medium)"
     [srcset]="
-      getSafeImagePath(
-        getImageVariants(product.image.replace('.webp', '')).small
-      ) +
-      ' 300w, ' +
-      getSafeImagePath(
-        getImageVariants(product.image.replace('.webp', '')).medium
-      ) +
-      ' 400w, ' +
-      getSafeImagePath(
-        getImageVariants(product.image.replace('.webp', '')).large
-      ) +
-      ' 500w'
+      getSafeImagePath(images.small) + ' 300w, ' +
+      getSafeImagePath(images.medium) + ' 400w, ' +
+      getSafeImagePath(images.large) + ' 500w'
     "
     sizes="(max-width: 639px) 300px, (max-width: 1023px) 400px, 500px"
-    [alt]="product.item"
+    [alt]="product?.item"
     class="product-image"
-    (error)="($event.target as HTMLImageElement).src = '/assets/placeholder.webp'"
+    (error)="handleImageError($event)"
   />
 
   <div class="product-info">
-    <h3>{{ product.item }}</h3>
-    <p class="description" *ngIf="product.description">
-      {{ product.description }}
-    </p>
-    <p class="brand">{{ product.brand }}</p>
-    <p class="price">{{ product.price }} kr</p>
+    <h3>{{ product?.item }}</h3>
+    <p *ngIf="product?.description" class="description">{{ product.description }}</p>
+    <p class="brand">{{ product?.brand }}</p>
+    <p class="price">{{ product?.price }} kr</p>
   </div>
 </div>
-
-<ng-template #invalidProduct>
-  <div class="product-card">Felaktig produktdata</div>
-</ng-template>

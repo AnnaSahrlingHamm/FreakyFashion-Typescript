@@ -41,4 +41,8 @@ export class ProductDetailsComponent implements OnInit {
       this.loading = false;
     }
   }
+   handleImageError(event: Event) {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = '/placeholder.webp';
+  }
 }

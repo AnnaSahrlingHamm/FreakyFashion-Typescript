@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Product } from '../../../products/product.model';
 import { ProductService } from '../../../products/services/product.service';
+import { AdminHeaderComponent } from '../../components/admin-header/admin-header.component';
+import { AdminLeftBarComponent } from '../../components/admin-left-bar/admin-left-bar.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, AdminHeaderComponent, AdminLeftBarComponent, ProductService ],
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
   styleUrls: ['./all-products.component.css']
