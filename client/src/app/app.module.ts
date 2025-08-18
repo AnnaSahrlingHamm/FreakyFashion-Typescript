@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 //import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module'; // Se till att du har denna
 
-// Dina komponenter:
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';

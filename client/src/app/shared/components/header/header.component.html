@@ -23,10 +23,10 @@
 
     <div id="headericons">
       <a href="#" (click)="$event.preventDefault()" class="icon">
-        <fa-icon [icon]="faHeart"></fa-icon>
+        <fa-icon [icon]="['fas', 'heart']"></fa-icon>
       </a>
       <a [routerLink]="'/basket'" class="icon" aria-label="Gå till kassan">
-        <fa-icon [icon]="faShoppingBasket"></fa-icon>
+        <fa-icon [icon]="['fas', 'shopping-basket']"></fa-icon>
       </a>
     </div>
   </div>
