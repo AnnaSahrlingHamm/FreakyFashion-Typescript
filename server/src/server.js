@@ -4,19 +4,32 @@ import cors from 'cors';
 
 const app = express();
 const port = 8000;
+
 app.use(cors());
 app.use(express.json());
 
 // Öppna databasen
 const db = new Database('./freakyfashion.db', { verbose: console.log });
 
-// Hämta alla produkter
+// Hämta alla produkter ELLER sök via ?q=
 app.get('/api/products', (req, res) => {
   try {
-    const products = db.prepare('SELECT * FROM products').all();
+    const q = req.query.q?.toString().trim();
+    let products;
+
+    if (q) {
+      const like = `%${q}%`;
+      // OBS: kolumnen heter 'item' (inte 'name')
+      products = db
+        .prepare('SELECT * FROM products WHERE item LIKE ? OR description LIKE ?')
+        .all(like, like);
+    } else {
+      products = db.prepare('SELECT * FROM products').all();
+    }
+
     res.json(products);
   } catch (err) {
-    console.error(err);
+    console.error('Fel i /api/products:', err);
     res.status(500).json({ error: 'Kunde inte hämta produkter' });
   }
 });
@@ -47,22 +60,16 @@ app.get('/api/products/:slug', (req, res) => {
   }
 });
 
-// Starta servern
-app.listen(8000, () => {
-  console.log('Server körs på http://localhost:8000');
+// (valfri demo-route – rättad med ledande slash)
+app.get('/api/tasks', (req, res) => {
+  const tasks = [
+    { id: 1, name: 'Storstäda' },
+    { id: 2, name: 'Laga mat' },
+  ];
+  res.json(tasks);
 });
 
-
-app.get("api/tasks", (req, res) => {
-
-    const tasks = [
-        {id: 1, name: "Storstäda"},
-        {id: 2, name: "Laga mat"},
-    ];
-
-    res.json(tasks);
-});
-
+// Starta servern (EN gång)
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-})
+  console.log(`Server körs på http://localhost:${port}`);
+});

@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+// src/app/search/pages/search-results-container/search-results-container.component.ts
+import { Component, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { ProductDisplayComponent } from '../../../shared/components/product-display/product-display.component';
@@ -11,55 +11,50 @@ import { Product } from '../../../products/product.model';
   selector: 'app-search-results-container',
   templateUrl: './search-results-container.component.html',
   styleUrls: ['./search-results-container.component.css'],
-  imports: [CommonModule, RouterModule, ProductDisplayComponent]
+  imports: [CommonModule, ProductDisplayComponent]
 })
-export class SearchResultsContainerComponent implements OnInit, OnDestroy {
-  @Input() searchTerm: string = '';
+export class SearchResultsContainerComponent implements OnChanges, OnDestroy {
+  @Input() searchTerm = '';
+
   products: Product[] = [];
   loading = false;
   error: string | null = null;
 
-  private subscription: Subscription | null = null;
+  private sub?: Subscription;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    // Lyssna på queryParams för ?q=...
-    this.route.queryParams.subscribe(params => {
-      const term = params['q'];
-      if (term) {
-        this.searchTerm = term;
-        this.fetchProducts();
-      }
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('searchTerm' in changes) {
+      this.fetchProducts();
+    }
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-  }
-
-  // ✅ När <app-search (search)="onSearch($event)"> triggas
-  onSearch(term: string): void {
-    this.searchTerm = term;
-    this.fetchProducts();
+    this.sub?.unsubscribe();
   }
 
   private fetchProducts(): void {
-    if (!this.searchTerm) return;
+    this.sub?.unsubscribe();
+    if (!this.searchTerm?.trim()) {
+      this.products = [];
+      this.error = null;
+      this.loading = false;
+      return;
+    }
 
     this.loading = true;
-    this.subscription?.unsubscribe(); // avbryt ev. tidigare request
-
-    this.subscription = this.http
+    this.sub = this.http
       .get<Product[]>(`http://localhost:8000/api/products?q=${encodeURIComponent(this.searchTerm)}`)
       .subscribe({
-        next: (data) => {
+        next: data => {
           this.products = Array.isArray(data) ? data : [];
           this.error = null;
           this.loading = false;
         },
-        error: (err) => {
+        error: err => {
           console.error('Fel vid hämtning av produkter:', err);
+          this.products = [];
           this.error = 'Kunde inte hämta produkter.';
           this.loading = false;
         }

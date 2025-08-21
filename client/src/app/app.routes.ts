@@ -11,18 +11,17 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
 import { ProductTableComponent } from './admin/components/product-table/product-table.component';
 import { AddProductComponent } from './admin/pages/add-product/add-product.component';
 
+
 export const routes: Routes = [
-  // Startsidan
+  
   { path: '', component: HomeComponent },
 
-  // Sökresultat
-  { path: 'search-results', component: SearchResultsComponent },
+  { path: 'search', component: SearchResultsComponent },
 
-  // Produkter
   { path: 'products/:id', component: ProductDetailsComponent }, 
   // :id = dynamisk route för enskild produkt
 
-  // Admin-del
+  
   {
     path: 'admin',
     children: [

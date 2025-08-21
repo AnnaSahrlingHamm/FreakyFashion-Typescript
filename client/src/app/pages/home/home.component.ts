@@ -3,26 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '../../products/services/product.service';
 import { Product } from '../../products/product.model';
-import { HeaderComponent } from '../../shared/components/header/header.component';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
-import { NavBarComponent } from '../../shared/components/nav-bar/nav-bar.component';
 import { HeroComponent } from '../../shared/components/hero/hero.component';
 import { ProductDisplayComponent } from '../../shared/components/product-display/product-display.component';
 import { SpotsComponent } from '../../shared/components/spots/spots.component';
-import { IconLinksComponent } from '../../shared/components/icon-links/icon-links.component';
 
 @Component({
   standalone: true,
   imports: [
     CommonModule,
     RouterModule,
-    HeaderComponent,
-    FooterComponent,
-    NavBarComponent,
     HeroComponent,
     ProductDisplayComponent,
     SpotsComponent,
-    IconLinksComponent
   ],
   selector: 'app-home',
   templateUrl: './home.component.html',

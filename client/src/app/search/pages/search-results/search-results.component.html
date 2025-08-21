@@ -1,7 +1,9 @@
-<div class="container">
-  <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <app-search-results-container [searchTerm]="searchTerm"></app-search-results-container>
-  <app-icon-links></app-icon-links>
-  <app-footer></app-footer>
+<div class="search-results">
+  <h1>Sökresultat</h1>
+  <p *ngIf="!searchTerm">Ingen sökterm angiven.</p>
+  <p *ngIf="searchTerm">Du sökte på: "{{ searchTerm }}"</p>
+
+  <app-search-results-container
+    [searchTerm]="searchTerm"
+  ></app-search-results-container>
 </div>

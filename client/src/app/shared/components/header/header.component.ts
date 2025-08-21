@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -8,7 +9,7 @@ import { faHeart, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })

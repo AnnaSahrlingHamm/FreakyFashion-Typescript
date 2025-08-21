@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Product } from '../product.model';
+import { Observable, map } from 'rxjs';
+
+export interface Product {
+  id: number;
+  item: string;
+  description: string;
+  brand: string;
+  price: number;
+  imageUrl: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +18,8 @@ export class ProductService {
   private apiUrl = 'http://localhost:8000/api/products';
 
   constructor(private http: HttpClient) {}
+
+
 
   /** Hämta utvalda produkter */
   getFeaturedProducts(): Observable<Product[]> {
