@@ -1,6 +1,7 @@
 import express from 'express';
 import Database from 'better-sqlite3';
 import cors from 'cors';
+import { pr } from '@fortawesome/angular-fontawesome';
 
 const app = express();
 const port = 8000;
@@ -60,16 +61,26 @@ app.get('/api/products/:slug', (req, res) => {
   }
 });
 
-// (valfri demo-route – rättad med ledande slash)
-app.get('/api/tasks', (req, res) => {
-  const tasks = [
-    { id: 1, name: 'Storstäda' },
-    { id: 2, name: 'Laga mat' },
-  ];
-  res.json(tasks);
+app.post('/api/products', (req, res) => {
+  const { item, description, image, brand, sku, price, created_at, published} = req.body;
+  try {
+    const insert = db.prepare('INSERT INTO products (item, description, image, brand, sku, price, created_at, published) VALUES (?, ?, ?, ?)');
+    const result = insert.run(item, description, image, brand, sku, price, created_at, published);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Kunde inte lagra produkt' });
+  }
+});
+
+
+app.delete('/api/products/:id', (req, res) => {
+  const productId = parseInt(req.params.id, 10);
+  res.json({ message: `Produkt med ID ${productId} har tagits bort` });
 });
 
 // Starta servern (EN gång)
 app.listen(port, () => {
   console.log(`Server körs på http://localhost:${port}`);
 });
+

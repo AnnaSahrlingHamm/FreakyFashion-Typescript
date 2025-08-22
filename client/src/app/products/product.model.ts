@@ -1,7 +1,7 @@
 export interface Product {
   id: number;                // unik identifierare
   slug?: string;             // URL-slug för produkten
-  item: string;              // produktnamn
+  item?: string;              // produktnamn
   description?: string;      // beskrivning
   image?: string;            // bild-URL
   brand?: string;            // märke
