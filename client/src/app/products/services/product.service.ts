@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { Product } from '../product.model'; // adjust the path
+import { Product } from '../product.model'; 
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -20,10 +20,10 @@ export class ProductService {
   }
 
   /** By slug */
-  getProductBySlug(slug: string): Observable<Product> {
-    // server route is /api/products/:slug
-    return this.http.get<Product>(`${this.apiUrl}/${encodeURIComponent(slug)}`);
-  }
+ getProductBySlug(slug: string): Observable<Product> {
+  return this.http.get<Product>(`http://localhost:8000/api/products/${encodeURIComponent(slug)}`);
+}
+
 
   /** Search (server expects ?q=...) */
   searchProducts(query: string): Observable<Product[]> {

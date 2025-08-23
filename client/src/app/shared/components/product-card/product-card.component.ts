@@ -1,18 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
-export interface Product {
-  id: number;
-  item: string;
-  description?: string;
-  brand?: string;
-  price: string;       // DB har TEXT; parsa där du behöver tal
-  image: string;       // t.ex. "woman-coat-4.webp"
-  slug: string;
-  sku?: string;
-  created_at?: string; // "2025-08-01"
-}
+import { productImages } from '../../../products/product-images';
+import { Product } from '../../../products/product.model';
 
 @Component({
   standalone: true,
@@ -21,23 +11,26 @@ export interface Product {
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnChanges {
   @Input() product!: Product;
 
-  get imageSrc(): string {
-    // Ligger direkt i assets/images/
-    return `assets/images/${this.product?.image ?? 'placeholder.webp'}`;
+  images = {
+    small: '/assets/images/placeholder.webp',
+    medium: '/assets/images/placeholder.webp',
+    large:  '/assets/images/placeholder.webp'
+  };
+
+  ngOnChanges(): void {
+    if (this.product?.image) {
+      const base = this.product.image.replace('.webp', '');
+      this.images = productImages[base] || this.images;
+    }
   }
 
-  handleImageError(event: Event): void {
-    const img = event.target as HTMLImageElement;
-    img.src = 'assets/images/placeholder.webp';
-  }
-
-  get isNew(): boolean {
-    if (!this.product?.created_at) return false;
-    const created = new Date(this.product.created_at);
-    const days = (Date.now() - created.getTime()) / 86400000;
-    return days < 30;
+  getSafeImagePath(p: string) { return p || '/assets/images/placeholder.webp'; }
+  handleImageError(ev: Event) {
+    const img = ev.target as HTMLImageElement;
+    img.src = '/assets/images/placeholder.webp';
+    img.srcset = '/assets/images/placeholder.webp';
   }
 }

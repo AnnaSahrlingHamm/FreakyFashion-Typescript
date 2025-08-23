@@ -1,23 +1,34 @@
 .adminLayout {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .adminContainer {
-    display: flex;
-    flex-grow: 1;  
-  }
-  
-  .adminLeftBar {
-    width: 200px; 
-    background-color: #e0e0e0;
-    padding: 20px;
-  }
-  
-  .adminContent {
-    flex-grow: 1; 
-    padding: 20px;
-    overflow: auto; 
-  }
-  
+  display: flex;
+  flex-direction: column;
+  /* använd min-height istället för låst 100vh */
+  min-height: 100%;
+}
+
+/* Den här raddelen fyller resterande höjd under adminHeader */
+.adminContainer {
+  display: flex;
+  flex: 1;         /* ta plats i kolumnen */
+  min-height: 0;   /* viktigt för att barn ska kunna overflow:a */
+}
+
+.adminLeftBar {
+  width: 200px;
+  background-color: #e0e0e0;
+  padding: 20px;
+}
+
+.adminContent {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;       /* gör att formuläret kan scrolla */
+  padding: 20px;
+
+  /* liten botten-padding så man inte “krockar” med footern på korta skärmar */
+  padding-bottom: 3rem;
+}
+
+.newProductMain form {
+  display: block;
+  padding-bottom: 2.5rem; /* extra luft i botten */
+}

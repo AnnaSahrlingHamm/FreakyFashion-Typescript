@@ -1,48 +1,61 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';  
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from '../../../products/services/product.service';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule], 
   selector: 'app-add-product-form',
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add-product-form.component.html',
   styleUrls: ['./add-product-form.component.css']
 })
 export class AddProductFormComponent {
-  productForm: FormGroup;
+  productForm!: FormGroup;   // <-- deklarera först
+  isSubmitting = false;
+  error: string | null = null;
 
-  constructor(private fb: FormBuilder, private productService: ProductService) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    // <-- initiera här, när fb finns
     this.productForm = this.fb.group({
-      item: ['', [Validators.required, Validators.maxLength(25)]],
+      item: ['', [Validators.required, Validators.maxLength(100)]],
       description: [''],
       image: ['', [Validators.required]],
       brand: [''],
       sku: ['', [Validators.required, Validators.pattern(/^[A-Z]{3}[0-9]{3}$/)]],
-      price: [''],
-      published: ['', Validators.required]
+      price: ['', [Validators.required]],
+      published: ['', [Validators.required]]
     });
   }
 
   onSubmit(): void {
-    if (this.productForm.invalid) {
-      return;
-    }
+    if (this.productForm.invalid) return;
+    this.isSubmitting = true;
+    const v = this.productForm.value;
+    const payload = {
+      item: v.item!,
+      description: v.description ?? '',
+      image: v.image!,
+      brand: v.brand ?? '',
+      sku: v.sku!,
+      price: v.price!,
+    };
 
-    const formValue = { ...this.productForm.value };
-    const [year, month, day] = formValue.published.split('-');
-    formValue.published = `${day}-${month}-${year}`;
-
-    this.productService.addProduct(formValue).subscribe({
+    this.http.post('http://localhost:8000/api/products', payload).subscribe({
       next: () => {
-        console.log('Product added');
+        this.isSubmitting = false;
         this.productForm.reset();
+        this.router.navigate(['/admin/products']);
       },
       error: (err) => {
-        console.error('Error adding product:', err);
+        this.isSubmitting = false;
+        this.error = err?.error?.error ?? 'Kunde inte spara produkten.';
+        console.error(err);
       }
     });
   }

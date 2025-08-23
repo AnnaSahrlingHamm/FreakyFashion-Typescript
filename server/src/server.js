@@ -1,7 +1,6 @@
 import express from 'express';
 import Database from 'better-sqlite3';
-import cors from 'cors';
-import { pr } from '@fortawesome/angular-fontawesome';
+import cors from 'cors';  
 
 const app = express();
 const port = 8000;
@@ -62,21 +61,62 @@ app.get('/api/products/:slug', (req, res) => {
 });
 
 app.post('/api/products', (req, res) => {
-  const { item, description, image, brand, sku, price, created_at, published} = req.body;
   try {
-    const insert = db.prepare('INSERT INTO products (item, description, image, brand, sku, price, created_at, published) VALUES (?, ?, ?, ?)');
-    const result = insert.run(item, description, image, brand, sku, price, created_at, published);
-    res.json(result);
+    console.log('POST /api/products body:', req.body);
+    const { item, description = '', image, brand = '', sku, price } = req.body;
+
+    if (!item || !image || !sku || !price) {
+      return res.status(400).json({ error: 'item, image, sku och price krävs' });
+    }
+
+    // enkel slugifiering
+    const slug = String(item)
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+
+    // created_at i ISO (du kan använda annat format om du vill)
+    const created_at = new Date().toISOString();
+
+    // OBS: kolumnordning och antal ? matchar exakt
+    const stmt = db.prepare(`
+      INSERT INTO products (image, item, brand, description, price, slug, sku, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    const info = stmt.run(
+      image,
+      item,
+      brand,
+      description,
+      String(price), 
+      slug,
+      sku,
+      created_at
+    );
+
+    const created = db.prepare('SELECT * FROM products WHERE id = ?').get(info.lastInsertRowid);
+    res.status(201).json(created);
   } catch (err) {
-    console.error(err);
+    console.error('POST /api/products error:', err);
     res.status(500).json({ error: 'Kunde inte lagra produkt' });
   }
 });
 
 
 app.delete('/api/products/:id', (req, res) => {
-  const productId = parseInt(req.params.id, 10);
-  res.json({ message: `Produkt med ID ${productId} har tagits bort` });
+  try {
+    const stmt = db.prepare('DELETE FROM products WHERE id = ?');
+    const info = stmt.run(req.params.id);
+    if (info.changes === 0) {
+      return res.status(404).json({ error: 'Produkten hittades inte' });
+    }
+    res.status(204).send(); 
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Kunde inte ta bort produkt' });
+  }
 });
 
 // Starta servern (EN gång)

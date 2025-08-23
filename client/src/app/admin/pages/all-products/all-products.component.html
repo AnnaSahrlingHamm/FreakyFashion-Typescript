@@ -1,17 +1,22 @@
 <div class="container">
-  <app-admin-header></app-admin-header>
-  <div class="admin-layout">
-    <app-admin-left-bar></app-admin-left-bar>
-    <div class="admin-content">
-      <h1>Alla produkter</h1>
-      <div *ngIf="loading">Laddar...</div>
-      <div *ngIf="error" class="error">{{ error }}</div>
-      <app-product-table
-        [products]="products"
-        [isLoading]="isLoading"
-        (deleteProduct)="deleteProduct($event)"
-      >
-      </app-product-table>
+  <div class="adminLayout">
+    <app-admin-header>Administration</app-admin-header>
+
+    <div class="adminContainer">
+      <app-admin-left-bar>Products</app-admin-left-bar>
+
+      <div class="adminContent">
+        <h1>Alla produkter</h1>
+
+        <p *ngIf="error" style="color: red">{{ error }}</p>
+
+        <app-product-table
+          [products]="products"
+          [isLoading]="isLoading"
+          (refresh)="onRefresh()"
+          (deleteProduct)="onDeleteProduct($event)">
+        </app-product-table>
+      </div>
     </div>
   </div>
 </div>

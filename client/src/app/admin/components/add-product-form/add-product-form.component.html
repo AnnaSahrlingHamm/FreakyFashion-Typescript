@@ -6,57 +6,33 @@
       <h1 id="newProductTitle">Ny produkt</h1>
       <br />
 
-      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-        <h3>Namn</h3>
-        <input
-          type="text"
-          formControlName="item"
-          placeholder="Ange namn"
-          maxlength="25"
-          required
-        />
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <h3>Namn</h3>
+  <input type="text" formControlName="item" required />
 
-        <h3>Beskrivning</h3>
-        <textarea
-          formControlName="description"
-          placeholder="Ange beskrivning"
-        ></textarea>
+  <h3>Beskrivning</h3>
+  <textarea formControlName="description"></textarea>
 
-        <h3>Bild</h3>
-        <input
-          type="url"
-          formControlName="image"
-          placeholder="Lägg till bild-URL"
-          required
-        />
+  <h3>Bildfilnamn</h3>
+  <input type="text" formControlName="image" placeholder="woman-coat-4.webp" required />
 
-        <h3>Märke</h3>
-        <input type="text" formControlName="brand" placeholder="Ange märke" />
+  <h3>Märke</h3>
+  <input type="text" formControlName="brand" />
 
-        <h3>SKU</h3>
-        <input
-          type="text"
-          formControlName="sku"
-          placeholder="Ange SKU (ABC123)"
-          pattern="[A-Z]{3}[0-9]{3}"
-          required
-          title="SKU måste vara i formatet ABC123 (tre bokstäver A-Z följt av tre siffror 0-9)"
-        />
+  <h3>SKU</h3>
+  <input type="text" formControlName="sku" placeholder="ABC123" required />
 
-        <h3>Pris</h3>
-        <input type="text" formControlName="price" placeholder="Ange pris" />
+  <h3>Pris</h3>
+  <input type="text" formControlName="price" required />
 
-        <h3>Publiceringsdatum</h3>
-        <div class="dateContainer">
-          <input type="date" formControlName="published" required />
-          <span class="calendarIcon">📅</span>
-        </div>
+  <h3>Publiceringsdatum</h3>
+  <input type="date" formControlName="published" required />
 
-        <br /><br />
-        <button type="submit" [disabled]="productForm.invalid">
-          Lägg till
-        </button>
-      </form>
+  <button type="submit" [disabled]="productForm.invalid || isSubmitting">Lägg till</button>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+</form>
+
     </article>
   </div>
 </section>

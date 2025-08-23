@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
 // Admin
 import { ProductTableComponent } from './admin/components/product-table/product-table.component';
 import { AddProductComponent } from './admin/pages/add-product/add-product.component';
+import { AllProductsComponent } from './admin/pages/all-products/all-products.component';
 
 
 export const routes: Routes = [
@@ -18,18 +19,16 @@ export const routes: Routes = [
 
   { path: 'search', component: SearchResultsComponent },
 
-  { path: 'products/:id', component: ProductDetailsComponent }, 
-  // :id = dynamisk route för enskild produkt
+  { path: 'products/:slug', component: ProductDetailsComponent }, 
 
   
   {
     path: 'admin',
     children: [
-      { path: 'products', component: ProductTableComponent },
+      { path: 'products', component: AllProductsComponent },
       { path: 'products/add-product', component: AddProductComponent }
     ]
   },
 
-  // Fallback (om ingen route matchar)
   { path: '**', redirectTo: '' }
 ];

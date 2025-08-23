@@ -1,23 +1,26 @@
-<div *ngIf="loading">Laddar produkt...</div>
-
-<div *ngIf="error" class="error">
-  {{ error }}
-</div>
-
-<div *ngIf="!loading && product" class="product-details">
-  <img
-  [src]="product.image || '/placeholder.webp'"
-  [alt]="product.item"
-  class="product-image"
-  (error)="handleImageError($event)" 
-/>
-
-  <h1>{{ product.item }}</h1>
-  <p class="price">{{ product.price }} SEK</p>
-
-  <div *ngIf="product.brand" class="brand">Märke: {{ product.brand }}</div>
-
-  <div *ngIf="product.description" class="description">
-    {{ product.description }}
+<section *ngIf="!loading && product; else loadingOrError" class="product-details">
+  <div class="product-image">
+    <img
+      [src]="'assets/images/' + product.image"
+      [alt]="product.item || 'Produktbild saknas'"
+      (error)="handleImageError($event)"
+    />
   </div>
-</div>
+
+  <div class="product-info">
+    <h2>{{ product.item || 'Namn saknas' }}</h2>
+    <p class="brand">{{ product.brand }}</p>
+    <p class="price">{{ product.price }} SEK</p>
+    <p class="description">{{ product.description }}</p>
+    <div class="actions">
+      <button type="button" class="add-to-cart" (click)="addToCart()">
+        Lägg i varukorg
+      </button>
+    </div>
+  </div>
+</section>
+
+<ng-template #loadingOrError>
+  <div *ngIf="loading">Laddar...</div>
+  <div *ngIf="error">{{ error }}</div>
+</ng-template>

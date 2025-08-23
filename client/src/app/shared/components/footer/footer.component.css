@@ -1,3 +1,9 @@
+footer {
+  position: static;
+  width: 100%;
+  margin-top: auto;
+}
+
 /* Accordion styles for mobile */
 .footersmall {
     background-color: #f8f9fa;
