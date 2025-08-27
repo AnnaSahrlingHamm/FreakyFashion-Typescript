@@ -1,52 +1,39 @@
-.spots {
-    display: none;
-    gap: 20px;
-  }
+/* default: göm på små skärmar */
+.spots { display: none; }
 
-  @media (min-width: 1024px) {
-    .spots {
-        display: flex;
-        gap: 20px;
-        justify-content: space-evenly;
-        padding: 20px;
-      }
-    
-      #spot1 {
-        position: relative;
-        text-align: center;
-      }
-    
-      .buy {
-        position: absolute;
-        color: white;
-        font-size: 3rem;
-        bottom: 50px;
-        left: 50px;
-      }
-    
-      #spot2 {
-        position: relative;
-        text-align: center;
-      }
-    
-      .our {
-        position: absolute;
-        color: white;
-        font-size: 3rem;
-        top: 50px;
-        right: 100px;
-      }
-    
-      #spot3 {
-        position: relative;
-        text-align: center;
-      }
-    
-      .clothes {
-        position: absolute;
-        color: white;
-        font-size: 3rem;
-        right: 50px;
-        bottom: 50px;
-      }
+@media (min-width: 1024px) {
+  .spots {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
   }
+  .spot-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 0; margin: 0; list-style: none;
+  }
+  .spot-card {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+  .spot-card img {
+    display: block;
+    width: 300px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .spot-caption {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 2px 6px rgba(0,0,0,.6);
+    pointer-events: none;
+  }
+  .spot-caption.buy { bottom: 20px; left: 20px; }
+  .spot-caption.our { top: 20px; right: 20px; }
+  .spot-caption.clothes { bottom: 20px; right: 20px; }
+}

@@ -1,111 +1,146 @@
-<!-- Desktop version -->
-<footer class="footerlarge">
-  <div class="column">
-    <h4>Shopping</h4>
-    <ul>
-      <li>Vinterjackor</li>
-      <li>Pufferjackor</li>
-      <li>Kappor</li>
-      <li>Trenchcoats</li>
-    </ul>
-  </div>
-  <div class="column">
-    <h4>Mina Sidor</h4>
-    <ul>
-      <li>Mina ordrar</li>
-      <li>Mitt konto</li>
-    </ul>
-  </div>
-  <div class="column">
-    <h4>Kundtjänst</h4>
-    <ul>
-      <li>Returnpolicy</li>
-      <li>Integritetspolicy</li>
-    </ul>
-  </div>
-</footer>
+<footer class="footer">
+  <!-- Desktop / tablet ≥ 640px: Tre kolumner -->
+  <div class="footerlarge">
+    <div class="column">
+      <h4>Shopping</h4>
+      <ul>
+        <li *ngFor="let l of shopping">
+          <a *ngIf="l.to" [routerLink]="l.to">{{ l.label }}</a>
+          <a *ngIf="l.href" [href]="l.href" rel="noopener">{{ l.label }}</a>
+        </li>
+      </ul>
+    </div>
 
-<!-- Mobile version -->
-<footer class="footersmall dMdNone">
-  <div class="accordion">
-    <!-- Shopping -->
-    <div class="accordionItem">
-      <h2 class="accordionHeader">
-        <button
-          class="accordionButton"
-          [ngClass]="{ collapsed: activeIndex !== 0 }"
-          type="button"
-          (click)="toggleAccordion(0)"
-          [attr.aria-expanded]="activeIndex === 0"
+    <div class="column">
+      <h4>Mina Sidor</h4>
+      <ul>
+        <li *ngFor="let l of minaSidor">
+          <a *ngIf="l.to" [routerLink]="l.to">{{ l.label }}</a>
+          <a *ngIf="l.href" [href]="l.href" rel="noopener">{{ l.label }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="column">
+      <h4>Kundtjänst</h4>
+      <ul>
+        <li *ngFor="let l of kundtjanst">
+          <a *ngIf="l.to" [routerLink]="l.to">{{ l.label }}</a>
+          <a *ngIf="l.href" [href]="l.href" rel="noopener">{{ l.label }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mobil < 640px: Accordion -->
+  <div class="footersmall">
+    <div class="accordion">
+      <!-- Shopping -->
+      <div class="accordionItem">
+        <h2 class="accordionHeader">
+          <button
+            class="accordionButton"
+            [ngClass]="{ collapsed: activeIndex !== 0 }"
+            type="button"
+            (click)="toggleAccordion(0)"
+            [attr.aria-expanded]="activeIndex === 0"
+            aria-controls="acc-0"
+          >
+            Shopping
+            <span class="accordionIcon">{{
+              activeIndex === 0 ? "-" : "+"
+            }}</span>
+          </button>
+        </h2>
+        <div
+          id="acc-0"
+          class="accordionCollapse"
+          [ngClass]="{ show: activeIndex === 0 }"
         >
-          Shopping
-          <span class="accordionIcon">
-            {{ activeIndex === 0 ? "-" : "+" }}
-          </span>
-        </button>
-      </h2>
-      <div class="accordionCollapse" [ngClass]="{ show: activeIndex === 0 }">
-        <div class="accordionBody">
-          <ul>
-            <li>Vinterjackor</li>
-            <li>Pufferjackor</li>
-            <li>Kappor</li>
-            <li>Trenchcoats</li>
-          </ul>
+          <div class="accordionBody">
+            <ul>
+              <li *ngFor="let l of shopping">
+                <a *ngIf="l.to" [routerLink]="l.to">{{ l.label }}</a>
+                <a *ngIf="l.href" [href]="l.href" rel="noopener">{{
+                  l.label
+                }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mina Sidor -->
+      <div class="accordionItem">
+        <h2 class="accordionHeader">
+          <button
+            class="accordionButton"
+            [ngClass]="{ collapsed: activeIndex !== 1 }"
+            type="button"
+            (click)="toggleAccordion(1)"
+            [attr.aria-expanded]="activeIndex === 1"
+            aria-controls="acc-1"
+          >
+            Mina Sidor
+            <span class="accordionIcon">{{
+              activeIndex === 1 ? "-" : "+"
+            }}</span>
+          </button>
+        </h2>
+        <div
+          id="acc-1"
+          class="accordionCollapse"
+          [ngClass]="{ show: activeIndex === 1 }"
+        >
+          <div class="accordionBody">
+            <ul>
+              <li *ngFor="let l of minaSidor">
+                <a *ngIf="l.to" [routerLink]="l.to">{{ l.label }}</a>
+                <a *ngIf="l.href" [href]="l.href" rel="noopener">{{
+                  l.label
+                }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kundtjänst -->
+      <div class="accordionItem">
+        <h2 class="accordionHeader">
+          <button
+            class="accordionButton"
+            [ngClass]="{ collapsed: activeIndex !== 2 }"
+            type="button"
+            (click)="toggleAccordion(2)"
+            [attr.aria-expanded]="activeIndex === 2"
+            aria-controls="acc-2"
+          >
+            Kundtjänst
+            <span class="accordionIcon">{{
+              activeIndex === 2 ? "-" : "+"
+            }}</span>
+          </button>
+        </h2>
+        <div
+          id="acc-2"
+          class="accordionCollapse"
+          [ngClass]="{ show: activeIndex === 2 }"
+        >
+          <div class="accordionBody">
+            <ul>
+              <li *ngFor="let l of kundtjanst">
+                <a *ngIf="l.to" [routerLink]="l.to">{{ l.label }}</a>
+                <a *ngIf="l.href" [href]="l.href" rel="noopener">{{
+                  l.label
+                }}</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Mina Sidor -->
-    <div class="accordionItem">
-      <h2 class="accordionHeader">
-        <button
-          class="accordionButton"
-          [ngClass]="{ collapsed: activeIndex !== 1 }"
-          type="button"
-          (click)="toggleAccordion(1)"
-          [attr.aria-expanded]="activeIndex === 1"
-        >
-          Mina Sidor
-          <span class="accordionIcon">
-            {{ activeIndex === 1 ? "-" : "+" }}
-          </span>
-        </button>
-      </h2>
-      <div class="accordionCollapse" [ngClass]="{ show: activeIndex === 1 }">
-        <div class="accordionBody">
-          <ul>
-            <li>Mina ordrar</li>
-            <li>Mitt konto</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kundtjänst -->
-    <div class="accordionItem">
-      <h2 class="accordionHeader">
-        <button
-          class="accordionButton"
-          [ngClass]="{ collapsed: activeIndex !== 2 }"
-          type="button"
-          (click)="toggleAccordion(2)"
-          [attr.aria-expanded]="activeIndex === 2"
-        >
-          Kundtjänst
-          <span class="accordionIcon">
-            {{ activeIndex === 2 ? "-" : "+" }}
-          </span>
-        </button>
-      </h2>
-      <div class="accordionCollapse" [ngClass]="{ show: activeIndex === 2 }">
-        <div class="accordionBody">
-          <ul>
-            <li>Returnpolicy</li>
-            <li>Integritetspolicy</li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </div>
+
+  <div class="copyright">© {{ currentYear }} Freaky Fashion</div>
 </footer>

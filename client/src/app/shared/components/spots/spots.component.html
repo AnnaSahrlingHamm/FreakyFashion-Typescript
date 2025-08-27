@@ -1,28 +1,19 @@
 <section class="spots">
-  <button (click)="preventDefault($event)">
-    <article id="spot1">
-      <img [src]="eyeImg" alt="staring eye with the text 'Buy'" />
-      <div class="buy">Buy!</div>
-    </article>
-  </button>
+  <ul class="spot-list">
+    <li *ngFor="let spot of topSpots; let i = index">
+      <a
+        class="spot-link"
+        [routerLink]="spot.to || ['/']"
+        [attr.aria-label]="spot.alt"
+      >
+        <figure class="spot-card">
+          <img [src]="spot.src" [alt]="spot.alt" />
 
-  <button (click)="preventDefault($event)">
-    <article id="spot2">
-      <img
-        [src]="shoeImg"
-        alt="grinning lady's shoe sole in giant closeup with the text 'Our'"
-      />
-      <div class="our">Our!</div>
-    </article>
-  </button>
-
-  <button (click)="preventDefault($event)">
-    <article id="spot3">
-      <img
-        [src]="catImg"
-        alt="Cat with mouth open wide with the text 'Clothes!'"
-      />
-      <div class="clothes">Clothes!</div>
-    </article>
-  </button>
+          <figcaption class="spot-caption" [ngClass]="['buy','our','clothes'][i]">
+            {{ captions[i] }}
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+  </ul>
 </section>

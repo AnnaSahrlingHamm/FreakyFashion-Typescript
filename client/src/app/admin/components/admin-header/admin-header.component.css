@@ -2,8 +2,15 @@
   background-color: black;
   color: white;
   text-align: center;
+  margin: auto;
+  height: 80px;
   padding: 20px 0;
   font-size: 2rem;
   font-family: 'Playfair Display', cursive;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  margin: auto;
+  padding: 0 20px;
 }

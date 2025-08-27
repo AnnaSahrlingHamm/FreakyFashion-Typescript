@@ -1,9 +1,12 @@
-<div class="search-results">
-  <h1>Sökresultat</h1>
-  <p *ngIf="!searchTerm">Ingen sökterm angiven.</p>
+<div class="search-results"> 
+  <h1 *ngIf="count > 0">Hittade {{ count }} produkter</h1>
+  <h1 *ngIf="count === 0 && searchTerm">Inga produkter hittades</h1>
+  <h1 *ngIf="!searchTerm">Ingen sökterm angiven.</h1>
+
   <p *ngIf="searchTerm">Du sökte på: "{{ searchTerm }}"</p>
 
   <app-search-results-container
     [searchTerm]="searchTerm"
+    (resultsCount)="count = $event"
   ></app-search-results-container>
 </div>

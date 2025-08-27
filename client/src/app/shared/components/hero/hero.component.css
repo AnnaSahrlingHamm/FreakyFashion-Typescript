@@ -1,5 +1,8 @@
 .hero {
+    position: relative;
     display: flex;
+    width: 100%;
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -8,9 +11,13 @@
     background-color: whitesmoke;
     border: 7px dotted orange;
     color: hotpink;
-    font-style: bold;
-    font-family: cursive;
+    font-weight: 300; 
+    /* font-family: cursive; */
   }
+
+
+.hero img { max-width: 100%; height: auto; display: block; }
+
 
   .heroText {
     font-family: 'Licorice';

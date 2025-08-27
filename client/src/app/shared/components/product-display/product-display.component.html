@@ -3,7 +3,7 @@
     Inga produkter att visa
   </div>
 
-  <ul class="product-list" *ngIf="products?.length">
+  <ul class="product-list" *ngIf="products && products.length">
     <li *ngFor="let product of products">
       <app-product-card [product]="product"></app-product-card>
     </li>

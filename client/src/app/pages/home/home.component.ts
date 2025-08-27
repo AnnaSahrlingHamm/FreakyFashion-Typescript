@@ -28,16 +28,14 @@ export class HomeComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    document.title = 'Freaky Fashion';
-    console.log('HomeComponent renderas');
-
+    this.loading = true;
     this.productService.getFeaturedProducts().subscribe({
       next: (data) => {
-        this.featuredProducts = data;
+        this.featuredProducts = data;   // här är det max 8 st
         this.loading = false;
       },
       error: () => {
-        this.error = 'Något gick fel vid hämtning av produkter';
+        this.error = 'Kunde inte hämta produkter.';
         this.loading = false;
       }
     });

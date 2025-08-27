@@ -1,25 +1,28 @@
 <div class="product-card">
-  <img
-    [src]="getSafeImagePath(images.medium)"
-    [srcset]="
-      getSafeImagePath(images.small) +
-      ' 300w, ' +
-      getSafeImagePath(images.medium) +
-      ' 400w, ' +
-      getSafeImagePath(images.large) +
-      ' 500w'
-    "
-    sizes="(max-width: 639px) 300px, (max-width: 1023px) 400px, 500px"
-    [alt]="product.item"
-    class="product-image"
-    (error)="handleImageError($event)"
-  />
+  <div class="image-wrapper">
+    <img
+      [src]="getSafeImagePath(images.medium)"
+      [srcset]="
+        getSafeImagePath(images.small) + ' 300w, ' +
+        getSafeImagePath(images.medium) + ' 400w, ' +
+        getSafeImagePath(images.large) + ' 500w'
+      "
+      sizes="(max-width: 639px) 300px, (max-width: 1023px) 400px, 500px"
+      [alt]="product?.item"
+      class="product-image"
+      (error)="handleImageError($event)"
+    />
+
+    <!-- Hjärtikon -->
+    <button class="heart-btn" (click)="$event.preventDefault()">
+      <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+    </button>
+  </div>
+
   <div class="product-info">
-    <h3>{{ product.item }}</h3>
-    <p *ngIf="product.description" class="description">
-      {{ product.description }}
-    </p>
-    <p class="brand">{{ product.brand }}</p>
-    <p class="price">{{ product.price }} kr</p>
+    <h3>{{ product?.item }}</h3>
+    <p *ngIf="product?.description" class="description">{{ product.description }}</p>
+    <p class="brand">{{ product?.brand }}</p>
+    <p class="price">{{ product?.price }} kr</p>
   </div>
 </div>

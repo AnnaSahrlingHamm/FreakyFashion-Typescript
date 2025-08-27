@@ -1,13 +1,8 @@
-<div class="container">
-  <div class="adminLayout">
-    <app-admin-header>Administration</app-admin-header>
+<div class="adminShell">
+  <app-admin-header class="header">Administration</app-admin-header>
+  <app-admin-left-bar class="sidebar">Products</app-admin-left-bar>
 
-    <div class="adminContainer">
-      <app-admin-left-bar>Products</app-admin-left-bar>
-
-      <div class="adminContent">
-        <app-add-product-form></app-add-product-form>
-      </div>
-    </div>
-  </div>
+  <section class="adminContent">
+    <app-add-product-form></app-add-product-form>
+  </section>
 </div>

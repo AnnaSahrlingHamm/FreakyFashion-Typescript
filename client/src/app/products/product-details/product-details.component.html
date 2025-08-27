@@ -20,6 +20,8 @@
   </div>
 </section>
 
+<app-similar-products *ngIf="product" [product]="product"></app-similar-products>
+
 <ng-template #loadingOrError>
   <div *ngIf="loading">Laddar...</div>
   <div *ngIf="error">{{ error }}</div>

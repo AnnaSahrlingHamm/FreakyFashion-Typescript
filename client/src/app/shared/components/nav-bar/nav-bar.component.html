@@ -1,22 +1,21 @@
-<!-- Mobile / small version -->
-<nav class="toppnav">
-  <ul>
-    <li>
-      <a [routerLink]="'/admin-index'" class="customLink"><h2>Nyheter</h2></a>
-    </li>
-    <li>
-      <a [routerLink]="'/admin-index'" class="customLink"
-        ><h2>Topplistan</h2></a
-      >
-    </li>
-    <li>
-      <a [routerLink]="'/admin-index'" class="customLink"><h2>Rea</h2></a>
-    </li>
-    <li>
-      <a [routerLink]="'/new'" class="customLink"><h2>Kampanjer</h2></a>
-    </li>
+<!-- Hamburger syns bara på mobil -->
+<button class="navToggle" (click)="toggle()" aria-label="Öppna meny" [attr.aria-expanded]="isOpen">
+  ☰
+</button>
+
+<!-- Overlay bakom sidomenyn på mobil -->
+<div class="backdrop" *ngIf="isOpen" (click)="toggle()" aria-hidden="true"></div>
+
+<!-- Själva menyn -->
+<nav class="nav" [class.open]="isOpen">
+  <ul class="navList">
+    <li><a routerLink="/" (click)="closeOnNavigate()">Hem</a></li>
+    <li><a routerLink="/search" (click)="closeOnNavigate()">Sök</a></li>
+    <li><a routerLink="/admin/products" (click)="closeOnNavigate()">Admin – produkter</a></li>
+    <li><a routerLink="/admin/products/add-product" (click)="closeOnNavigate()">Ny produkt</a></li>
   </ul>
 </nav>
+
 
 <!-- Desktop / large version -->
 <nav class="toppnavLarge">

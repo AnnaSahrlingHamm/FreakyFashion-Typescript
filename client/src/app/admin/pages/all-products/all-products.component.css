@@ -1,3 +1,57 @@
-.container {
-  padding: 1rem;
+/* Grundlayout */
+.adminShell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar content";
+  min-height: 100dvh;   /* fyll hela vyhöjden */
+  background: #fafafa;
+}
+
+/* Sticky topbar */
+.header {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Sticky sidomeny (scrollar separat) */
+.sidebar {
+  grid-area: sidebar;
+  position: sticky;
+  top: 64px; /* samma som headerns höjd */
+  align-self: start;
+  height: calc(100dvh - 64px);
+  overflow: auto;
+  border-right: 1px solid #e6e6e6;
+  background: linear-gradient(to bottom, #f7f7f7, #e9e9e9);
+}
+
+/* Innehållet (tabell eller formulär) */
+.content {
+  grid-area: content;
+  padding: 24px;
+  min-width: 0;       /* viktigt för att långa tabeller inte “spränger” layouten */
+  overflow: auto;     /* egen scroll om det blir högt */
+}
+
+/* Responsivt: lägg sidomeny under header på små skärmar */
+@media (max-width: 900px) {
+  .adminShell {
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px auto 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "content";
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e6e6e6;
+  }
 }

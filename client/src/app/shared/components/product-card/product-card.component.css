@@ -32,6 +32,11 @@
   transform: scale(1.02);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
   
   #bild img {
     object-fit: cover;
@@ -57,20 +62,26 @@
     padding-top: 2px;
   }
   
-  .heartIcon {
+  .heart-btn {
     position: absolute;
-    top: 10px;
+    bottom: 10px;
     right: 10px;
     background: none;
     border: none;
     color: grey;
     font-size: 1.5rem;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
-  
-  .heartIcon:hover {
+
+  .heart-btn:hover {
+    font-size: 1.8em;
     color: orange;
   }
+
+  .heart-btn fa-icon {
+  font-size: 1.5rem;
+}
   
   .productInfo {
     flex: 1;
@@ -137,7 +148,7 @@
     font-weight: bold;
   }
   
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     .productCard {
       flex-direction: row;
       align-items: flex-start;

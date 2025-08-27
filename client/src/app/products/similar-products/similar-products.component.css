@@ -1,0 +1,28 @@
+.similar {
+  margin-top: 32px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tile-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}

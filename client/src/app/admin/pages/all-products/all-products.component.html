@@ -1,22 +1,18 @@
-<div class="container">
-  <div class="adminLayout">
-    <app-admin-header>Administration</app-admin-header>
+<div class="adminShell">
+  <app-admin-header class="header">Administration</app-admin-header>
+  <app-admin-left-bar class="sidebar">Products</app-admin-left-bar>
 
-    <div class="adminContainer">
-      <app-admin-left-bar>Products</app-admin-left-bar>
+  <section class="adminContent">
+    <h1>Alla produkter</h1>
 
-      <div class="adminContent">
-        <h1>Alla produkter</h1>
+    <p *ngIf="error" style="color: red">{{ error }}</p>
 
-        <p *ngIf="error" style="color: red">{{ error }}</p>
-
-        <app-product-table
-          [products]="products"
-          [isLoading]="isLoading"
-          (refresh)="onRefresh()"
-          (deleteProduct)="onDeleteProduct($event)">
-        </app-product-table>
-      </div>
-    </div>
-  </div>
+    <app-product-table
+      [products]="products"
+      [isLoading]="isLoading"
+      (refresh)="onRefresh()"
+      (deleteProduct)="onDeleteProduct($event)"
+    >
+    </app-product-table>
+  </section>
 </div>

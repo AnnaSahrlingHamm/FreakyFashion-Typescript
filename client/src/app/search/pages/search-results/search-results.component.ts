@@ -23,9 +23,11 @@ import { SearchResultsContainerComponent } from '../../pages/search-results-cont
   ]
 })
 export class SearchResultsComponent implements OnInit {
-  searchTerm: string = ''; 
+  searchTerm: string = '';
+  count: number = 0;  // 🔥 nytt fält
 
   constructor(private route: ActivatedRoute) {} 
+
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.searchTerm = params['q'] || '';

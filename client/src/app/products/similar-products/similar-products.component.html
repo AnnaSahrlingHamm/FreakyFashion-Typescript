@@ -1,0 +1,18 @@
+<section class="similar">
+  <h2 class="title">Liknande produkter</h2>
+
+  <ng-container *ngIf="!loading && !error; else state">
+    <ul class="grid">
+      <li *ngFor="let p of similar">
+        <a class="tile-link" [routerLink]="['/products', p.slug]">
+          <app-product-card [product]="p"></app-product-card>
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #state>
+    <p *ngIf="loading" class="muted">Laddar …</p>
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </ng-template>
+</section>
