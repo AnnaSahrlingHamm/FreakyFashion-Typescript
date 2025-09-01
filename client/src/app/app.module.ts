@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+/* import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 //import { HttpClientModule } from '@angular/common/http';
@@ -55,3 +55,4 @@ import { IconLinksComponent } from './shared/components/icon-links/icon-links.co
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+ */

@@ -19,14 +19,17 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
-  ngOnInit(): void {
-    const slug = this.route.snapshot.paramMap.get('slug');   // <-- Hämta :slug
+// product-details.component.ts (inne i ngOnInit)
+ngOnInit(): void {
+  this.route.paramMap.subscribe(params => {
+    const slug = params.get('slug');
     if (!slug) {
       this.error = 'Ingen produkt angiven';
-      this.loading = false;
+      this.product = null;
       return;
     }
 
+    this.loading = true;
     this.productService.getProductBySlug(slug).subscribe({
       next: (p) => { this.product = p; this.loading = false; },
       error: (err) => {
@@ -35,7 +38,8 @@ export class ProductDetailsComponent implements OnInit {
         this.loading = false;
       }
     });
-  }
+  });
+}
 
    handleImageError(event: Event) {
     const imgElement = event.target as HTMLImageElement;

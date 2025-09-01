@@ -2,6 +2,7 @@
 .productCard {
   display: flex;
   flex-direction: column;
+  position: relative;
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
@@ -12,6 +13,23 @@
   gap: 1rem;
 }
 
+.card-overlay {
+  position: absolute;
+  inset: 0;           /* täck hela kortet */
+  z-index: 1;
+  background: transparent;
+}
+
+.overlay-link {
+  position: absolute;
+  inset: 0;                     /* fyll hela bildytan */
+  display: block;
+  z-index: 2;                   /* under hjärtat, över bilden */
+}
+
+.image-wrapper {
+  position: relative; /* för att positionera hjärt-knappen */
+}
 
 .bildcontainer {
   position: relative;
@@ -35,7 +53,7 @@
 
 .image-wrapper {
   position: relative;
-  display: inline-block;
+  display: block;
 }
   
   #bild img {
@@ -66,6 +84,7 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+    z-index: 3;
     background: none;
     border: none;
     color: grey;

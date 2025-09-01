@@ -1,39 +1,65 @@
 .hero {
-    position: relative;
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    flex-direction: column;
+  font-family: 'Licorice', cursive;
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+  background-color: whitesmoke;
+  border: 7px dotted orange;
+  color: hotpink;
+  font-weight: 300;
+}
+
+.hero img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Textinnehåll */
+.hero-content {
+  max-width: 600px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text {
+  font-size: 1.125rem;
+  color: rgb(93, 7, 72);
+}
+
+/* Desktop: bild + text sida vid sida */
+@media (min-width: 1024px) {
+  .hero {
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 40px;
-    background-color: whitesmoke;
-    border: 7px dotted orange;
-    color: hotpink;
-    font-weight: 300; 
-    /* font-family: cursive; */
+    gap: 50px;
   }
 
-
-.hero img { max-width: 100%; height: auto; display: block; }
-
-
-  .heroText {
-    font-family: 'Licorice';
-    color: rgb(93, 7, 72);
+  .hero picture,
+  .hero-content {
+    flex: 1; /* lika mycket utrymme åt båda */
+    max-width: 50%;
   }
 
-  @media (min-width: 1024px) {
-    
-    .hero {
-        display: flex;
-        flex-direction: row-reverse;
-        gap: 50px;
-        justify-content: right;
-        font-size: 2.8rem;
-        color: lightgray;
-        padding: 40px;
-      }
-    
+  .hero-content {
+    text-align: left;
   }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-text {
+    font-size: 1.25rem;
+  }
+}
+

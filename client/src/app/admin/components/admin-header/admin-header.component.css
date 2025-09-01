@@ -2,15 +2,17 @@
   background-color: black;
   color: white;
   text-align: center;
-  margin: auto;
+  margin: 0;
   height: 80px;
-  padding: 20px 0;
+  padding: 0;                     
+  display: flex;                  
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
-  font-family: 'Playfair Display', cursive;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Arizonia', cursive;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
-
-h1 {
-  margin: auto;
+.adminHeader h1 {
+  margin: 0;
   padding: 0 20px;
 }

@@ -4,9 +4,7 @@
   <ng-container *ngIf="!loading && !error; else state">
     <ul class="grid">
       <li *ngFor="let p of similar">
-        <a class="tile-link" [routerLink]="['/products', p.slug]">
-          <app-product-card [product]="p"></app-product-card>
-        </a>
+        <app-product-card [product]="p"></app-product-card>
       </li>
     </ul>
   </ng-container>

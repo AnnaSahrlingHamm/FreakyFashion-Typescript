@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Arizonia';
+  src: url('/assets/fonts/Arizonia/Arizonia-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Babylonica */
+@font-face {
+  font-family: 'Babylonica';
+  src: url('/assets/fonts/Babylonica/Babylonica-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Comforter Brush */
+@font-face {
+  font-family: 'Comforter_Brush';
+  src: url('/assets/fonts/Comforter_Brush/ComforterBrush-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Licorice */
+@font-face {
+  font-family: 'Licorice';
+  src: url('/assets/fonts/Licorice/Licorice-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Smooch */
+@font-face {
+  font-family: 'Smooch';
+  src: url('/assets/fonts/Smooch/Smooch-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* WindSong Medium */
+@font-face {
+  font-family: 'WindSong';
+  src: url('/assets/fonts/WindSong/WindSong-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* WindSong Regular */
+@font-face {
+  font-family: 'WindSong';
+  src: url('/assets/fonts/WindSong/WindSong-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,4 +1,4 @@
-<section class="hero" (mouseenter)="stop()" (mouseleave)="start()">
+<section class="hero">
   <picture>
     <source [srcset]="current.imgLarge" media="(min-width: 768px)" />
     <img
@@ -14,32 +14,5 @@
   <div class="hero-content">
     <h1 class="hero-title">{{ current.heading }}</h1>
     <p class="hero-text">{{ current.body }}</p>
-
-    <!--  <a
-      *ngIf="current.ctaLabel && current.ctaLink"
-      class="hero-cta"
-      [routerLink]="current.ctaLink"
-      >{{ current.ctaLabel }}</a
-    > -->
-  </div>
-
-  <div class="hero-controls" aria-label="Bildspel kontroller">
-    <button type="button" (click)="prev()" aria-label="Föregående bild">
-      ‹
-    </button>
-    <button type="button" (click)="next()" aria-label="Nästa bild">›</button>
-  </div>
-
-  <div class="hero-dots" role="tablist" aria-label="Hero slides">
-    <button
-      *ngFor="let s of slides; let i = index"
-      type="button"
-      class="dot"
-      role="tab"
-      [class.active]="i === index"
-      [attr.aria-selected]="i === index"
-      [attr.aria-controls]="'hero-slide-' + i"
-      (click)="index = i"
-    ></button>
   </div>
 </section>

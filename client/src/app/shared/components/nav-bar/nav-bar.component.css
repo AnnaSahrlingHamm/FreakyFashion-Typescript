@@ -1,106 +1,71 @@
 
-.toppnavLarge { display: none; }
-
-.nav, .backdrop { display: block; } 
-
-.nav {
-  align-items: center;
-  gap: 1rem;
+.navVertical {
+  display: block;
+  padding: .5rem 1rem;
 }
+
+h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
 .navList {
   display: flex;
-  gap: 1rem;
-  list-style: none;
-  padding: 0; margin: 0;
-}
-.navList a {
-  text-decoration: none;
-  color: #222;
-  padding: .5rem .75rem;
-  border-radius: .5rem;
-}
-.navList a:hover { background: #f1f1f1; }.navToggle {
-  display: inline-flex;
-  background: #000;
-  color: #fff;
-  border: 0;
-  padding: .5rem .75rem;
-  border-radius: .5rem;
-}
-
-
-
-/* Hamburger-knapp visas bara på mobil */
-
-  .nav {
-    position: fixed;
-    top: 0; left: 0;
-    height: 100dvh;
-    width: 280px;
-    background: #fff;
-    box-shadow: 2px 0 16px rgba(0,0,0,.2);
-    transform: translateX(-100%);
-    transition: transform .25s ease;
-    padding: 1rem;
-    z-index: 1001;
-    display: block;    /* vertikal lista */
-  }
-  .nav.open { transform: translateX(0); }
-
-  .navList { display: block; }
-  .navList li { margin: .25rem 0; }
-  .navList a { display: block; }
-
-  .backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.35);
-    z-index: 1000;
-  }
-
-
-@media (min-width: 1024px) {
-
-.nav, .backdrop, .navToggle { display: none; }
-
-.toppnavLarge {
-  display: block;
-  position: relative;      /* eller sticky/top:0 om du vill att den ska följa */
-  z-index: 5;
-  background: #fff;
-  padding: .5rem 1rem;
-  border-bottom: 1px solid #eee;
-}
-
-.toppnavLarge ul {
-  display: flex;
-  gap: 1.25rem;
+  flex-direction: column;  /* gör den vertikal */
+  gap: .5rem;
   list-style: none;
   margin: 0;
   padding: 0;
-
-  justify-content: center;     /* centrera över heron */
-  align-items: center;
-  flex-wrap: wrap;              /* radbryt snyggt om fönstret blir smalt */
 }
 
-.toppnavLarge li { margin: 0; }
+.navList li {
+  margin: 0;
+}
 
-.toppnavLarge a {
+.navList a {
+  display: block;
   text-decoration: none;
   color: #222;
   padding: .5rem .75rem;
-  border-radius: .5rem;
-  display: inline-block;
+  border-radius: .25rem;
 }
+.navList a:hover { background: #f1f1f1; }
 
-.toppnavLarge a:hover { background: #f1f1f1; }
+.toppnavLarge { display: none; }
 
-/* Nollställ H2 i länkarna så de inte spränger layouten */
-.toppnavLarge h2 {
-  margin: 0;
-  font-size: 1rem;     /* justera som du vill */
-  font-weight: 600;
-}
 
+@media (min-width: 768px) {
+  .navVertical { display: none; }   /* göm mobilmenyn */
+
+  .toppnavLarge {
+    display: block;
+    position: relative;
+    z-index: 5;
+    background: #fff;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .toppnavLarge ul {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .toppnavLarge a {
+    text-decoration: none;
+    color: #222;
+    padding: .5rem .75rem;
+    border-radius: .5rem;
+    display: inline-block;
+  }
+  .toppnavLarge a:hover { background: #f1f1f1; }
+
+  
 }
